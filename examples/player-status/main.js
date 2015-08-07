@@ -30,7 +30,7 @@ angular.module('App', ['ngMaterial']).controller('Ctrl', function($scope) {
   });
 
   $scope.refresh = function () {
-    scala.api.getDevices().then(function (devices) {
+    scala.api.getDevices({ limit: 1000 }).then(function (devices) {
       devices.reverse();
       $scope.devices = devices;
       $scope.$digest();

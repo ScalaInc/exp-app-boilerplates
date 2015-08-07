@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# $VERSION
+
+CACHE:
+index.html
+main.js
+
+NETWORK:
+*

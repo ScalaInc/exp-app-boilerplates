@@ -1,0 +1,14 @@
+body{
+    background: #555;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#wrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+

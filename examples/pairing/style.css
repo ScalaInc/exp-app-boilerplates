@@ -1,0 +1,45 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#logo-wrapper {
+    width: 400px;
+    background: white;
+    border-radius: 8px;
+    color: rgb(228, 218, 208);
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    padding-bottom: 24px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    overflow: hidden;
+}
+
+#logo-wrapper img {
+    height: 24px;
+    padding: 12px 0px 0px 0px;
+}
+
+#text-wrapper{
+    position:absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 8px 0px 8px 0px;
+    background: rgb(228, 218, 208);
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+#code-wrapper {
+    padding: 8px 18px 18px 18px;
+}
+#code {
+    font-size: 84px;
+    color: black;
+    background: white;
+}

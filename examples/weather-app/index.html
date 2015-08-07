@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html manifest="manifest">
+
+  <head lang="en">
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link type="text/css" rel="stylesheet" href="app/css/style.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css"
+          media="all"/>
+    <link rel="shortcut icon" href="app/assets/favicon.ico" type="image/x-icon">
+    <title>Scala Weather App</title>
+  </head>
+
+  <body>
+
+    <!-- place holder -->
+    <div data-ng-view class="placeHolder"></div>
+
+  </body>
+
+  <!-- angular include scripts -->
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+  <script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+
+  <!-- app include scripts -->
+  <script src="app/app.js"></script>
+  <script src="app/class/wind.direction.js"></script>
+  <script src="app/routes/data/data.controller.js"></script>
+  <script src="app/routes/data/data.factory.js"></script>
+
+</html>

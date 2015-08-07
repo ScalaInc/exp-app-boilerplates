@@ -1,0 +1,26 @@
+{
+  "name": "weather-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ScalaInc/exp-player-core",
+  "authors": [
+    "remcoschiepers <remco.schiepers@scala.com>"
+  ],
+  "description": "Display weather information from scala weather feed",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "0.9.4",
+    "angular": "1.4.3",
+    "ng-lodash": "0.2.3",
+    "angular-route": "1.4.3",
+    "angular-loading-bar": "0.7.1",
+    "angular-sanitize": "1.4.3",
+    "events": "1.0.0"
+  }
+}

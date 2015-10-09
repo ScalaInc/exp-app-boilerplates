@@ -86,13 +86,17 @@ app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config'
     return dataFactory.getScalaWeatherFeed()
       .then(function (result) {
 
-        if ((typeof result.data !== 'undefined') && (!result.data.hasOwnProperty('error'))) {
-          $scope.dataFeed = formatData(result.data);
-        } else {
-          $scope.dataFeed = {error: 'no data received'};
-        }
+          // adding async data to life cycle
+          $scope.$evalAsync(function(){
+            if ((typeof result !== 'undefined')) {
+              $scope.dataFeed = formatData(result);
+            } else {
+              throw new Error('no data received');
+            }
+          });
 
-      });
+      }
+    );
   };
 
   // run initial data fetch and then do a automated polling every X seconds
@@ -106,3 +110,4 @@ app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config'
   );
 
 }]);
+

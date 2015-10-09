@@ -1,8 +1,9 @@
 body{
-    background: #555;
-    color: white;
+    background: white;
+    color: black;
     font-weight: bold;
     text-align: center;
+    font-size: 24px;
     font-family: sans-serif;
 }
 

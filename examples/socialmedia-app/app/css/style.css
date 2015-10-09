@@ -1,0 +1,904 @@
+/* ---------- landscape styles ---------- */
+
+.landscape{
+  height: 100%;
+  width: 100%;
+}
+
+.landscape .pageInfoStyle{
+  width: 15%;
+  height: 100%;
+  background-color: white;
+  z-index: 1;
+}
+
+.landscape .PageLogoStyle{
+  width: 100%;
+  height: 26.7%;
+}
+
+.landscape .PageInfoValueStyle{
+  height: 58.8%;
+  width: 100%;
+}
+
+.landscape .PageInfoContainer{
+  height: 75%;
+  width: 100%;
+}
+
+.landscape .PageDescriptionContainer{
+  width: 100%;
+  height: 25%;
+}
+
+.landscape .sideBarRowScalaLogo{
+  background-image: url(../assets/Poweredbyscala.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: initial;
+  width: 100%;
+  height: 14.5%;
+}
+
+.landscape .sideBarIcon1{
+  height: 75%;
+  width: 41%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.landscape .sideBarIcon2{
+  height: 75%;
+  width: 41%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.landscape .PageLabelText{
+  font-size: 2vh;
+  color: #C9C8C8;
+  font-weight: bold;
+}
+
+.landscape .PageDescriptionText{
+  color: #C9C8C8;
+  line-height: 1;
+  text-align: center;
+  width: 95%;
+  font-size: 1.5vh;
+}
+
+.landscape .PageInfoCell{
+  height: 33.3%;
+  width: 100%;
+}
+
+.landscape .dateText{
+  color: #9d9c9c;
+  font-size: 2vh;
+  margin-top:0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.landscape .timeText{
+  color: #9d9c9c;
+  font-weight: bold;
+  font-size: 3vh;
+  letter-spacing: 5px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.landscape .PagePostsStyle{
+  width: 85%;
+  height: 100%;
+}
+
+.landscape .pageCoverContainer{
+  height: 26.7%;
+  width: 100%;
+  z-index: 1;
+}
+
+.landscape .postGridContentContainer{
+  height: 65%;
+  width: 100%;
+  background-color: #C9C8C8;
+}
+
+.landscape .postGridTileGridContainer{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 73%;
+}
+
+.landscape .postGridTileGridContainerBig{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 43%;
+}
+
+.landscape .postGridTileImageContainerBig{
+  height: 100%;
+  width: 57%;
+}
+
+.landscape .smallTileMainContainer{
+  height: 100%;
+  width: 100%;
+}
+
+.landscape .smallTileImageContainer{
+  height:86%;
+  width: 100%;
+}
+
+.landscape .smallTileDateContainer{
+  height: 7%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7) ;
+}
+
+.landscape .smallTileText{
+  color: black;
+  font-size: 1.5vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.landscape .smallTileTextContainer{
+  height: 14%;
+  width: 100%;
+  padding: 2% 2% 2% 2%;
+}
+
+.landscape .normalTileMainContainer{
+   height: 100%;
+   width: 100%;
+ }
+
+.landscape .normalTileGridContainer{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 73%;
+}
+
+.landscape .normalTileTableHeader{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.landscape .normalTileHeaderText{
+  color: #C9C8C8;
+  font-size: 1.5vh;
+}
+
+.landscape .normalTileMiddleContainer{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 60%;
+  width: 100%;
+  text-align: left;
+  padding-top: 1%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-bottom: 1%;
+}
+
+.landscape .normalTileMiddleText {
+  color: black;
+  font-size: 1.8vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.landscape .normalTileTileFooter{
+  height: 30%;
+  width: 100%;
+}
+
+.landscape .normalTileFooterValueContainer{
+  height: 100%;
+  width: 33.3%;
+}
+
+.landscape .normalTileFooterText{
+  font-size: 1.6vh;
+  color: #9d9c9c;
+}
+
+.landscape .normalTileFooterTextContainer{
+  padding-left: 2%;
+  height: 100%;
+  width: 82%;
+}
+
+.landscape .normalTileImageContainer{
+  height: 100%;
+  width: 27%;
+}
+
+.landscape .normalTileIcon {
+  height: 100%;
+  width: 18%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.landscape .bigTileMainContainer{
+  height: 100%;
+  width: 100%;
+}
+
+.landscape .bigTileGridContainer{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 57%;
+}
+
+.landscape .bigTileGridContainer2{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 45%;
+}
+
+
+.landscape .bigTileTableHeader{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.landscape .bigTileHeaderText{
+  color: #C9C8C8;
+  font-size: 2vh;
+}
+
+.landscape .bigTileMiddleContainer{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 60%;
+  width: 100%;
+  text-align: left;
+  padding-top: 1%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-bottom: 1%;
+}
+
+.landscape .bigTileMiddleText {
+  color: black;
+  font-size: 3.5vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.landscape .bigTileTileFooter{
+  height: 30%;
+  width: 100%;
+}
+
+.landscape .bigTileFooterValueContainerLeft{
+  height: 100%;
+  width: 60%;
+}
+
+.landscape .bigTileFooterValueContainerRight{
+  height: 100%;
+  width: 40%;
+}
+
+.landscape .bigTileFooterTextBig{
+  font-size: 5vh;
+  color: #9d9c9c;
+}
+
+.landscape .bigTileFooterTextSmall{
+  font-size: 3vh;
+  color: #9d9c9c;
+}
+
+.landscape .bigTileFooterTextContainer{
+  padding-left: 2%;
+  width:75%;
+}
+
+.landscape .bigTileImageContainer{
+  height: 100%;
+  width: 43%;
+}
+
+.landscape .bigTileImageContainer2{
+  height: 100%;
+  width: 55%;
+}
+
+.landscape .bigTileIcon1 {
+  height: 100%;
+  width: 25%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.landscape .bigTileIcon2 {
+  height: 100%;
+  width: 25%;
+  background-size: 45%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.landscape .bigTileIcon3 {
+  height: 100%;
+  width: 25%;
+  background-size: 45%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.landscape .gridListSize{
+  height: 94% !important;
+  width: 98% !important;
+}
+
+/* ---------- portrait styles ---------- */
+
+.portrait{
+  height: 100%;
+  width: 100%;
+}
+
+.portrait .pageInfoStyle{
+  width: 100%;
+  height: 14.375%;
+  background-color: white;
+  z-index: 1;
+}
+
+.portrait .PageLogoStyle{
+  height: 100%;
+  width: 25.6%;
+}
+
+.portrait .PageInfoValueStyle{
+  height: 100%;
+  width: 74.4%;
+}
+
+.portrait .PageInfoContainer{
+  height: 50%;
+  width: 100%;
+}
+
+.portrait .PageDescriptionContainer{
+  width: 100%;
+  height: 50%;
+}
+
+.portrait .sideBarRowScalaLogo{
+  background-image: url(../assets/Poweredbyscala.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+  width: 0%;
+  height: 0%;
+}
+
+.portrait .sideBarIcon1{
+  height: 55%;
+  width: 48%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.portrait .PageDescriptionText{
+  color: #C9C8C8;
+  line-height: 1;
+  text-align: center;
+  width: 95%;
+  font-size: 1.5vh;
+}
+
+.portrait .sideBarIcon2{
+  height: 55%;
+  width: 48%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.portrait .PageLabelText{
+  font-size: 1.2vh;
+  color: #C9C8C8;
+  font-weight: bold;
+}
+
+.portrait .PageInfoCell{
+  height: 100%;
+  width: 33.3%;
+}
+
+.portrait .dateText{
+  color: #9d9c9c;
+  font-size: 1vh;
+  margin-top:0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .timeText{
+  color: #9d9c9c;
+  font-weight: bold;
+  font-size: 2vh;
+  letter-spacing: 5px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .PagePostsStyle{
+  width: 100%;
+  height: 85.6%;
+}
+
+.portrait .pageCoverContainer{
+  height: 24.1%;
+  width: 100%;
+  z-index: 1;
+}
+
+.portrait .postGridContentContainer{
+  height: 75.9%;
+  width: 100%;
+  background-color: #C9C8C8;
+}
+
+.portrait .postGridTileGridContainer{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 70%;
+}
+
+.portrait .middleTileTableHeader{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 15%;
+  width: 100%;
+  text-align: center;
+}
+
+.portrait .postGridTileTableMiddle{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 55%;
+  width: 100%;
+  text-align: left;
+  padding-top: 1%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-bottom: 1%;
+}
+
+.portrait .postGridTileImageContainer{
+  height: 100%;
+  width: 30%;
+}
+
+.portrait .postGridTileGridContainerBig{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 40%;
+}
+
+.portrait .postGridTileTableMiddleBig{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 67%;
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-bottom: 2%;
+}
+
+.portrait .postGridTileImageContainerBig{
+  height: 100%;
+  width: 58%;
+}
+
+.portrait .postGridContentContainerOutline{
+  height: 96%;
+  width: 96%;
+}
+
+.portrait .facebookLogo {
+  width: 56.20%;
+  height: 30.55%;
+}
+
+.portrait .postGridTileTableMiddleText {
+  color: black;
+  font-size: 1.5vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .smallTileMainContainer{
+  height: 100%;
+  width: 100%;
+}
+
+.portrait .smallTileImageContainer{
+  height:73%;
+  width: 100%;
+}
+
+.portrait .smallTileDateContainer{
+  height: 7%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7) ;
+}
+
+.portrait .smallTileText{
+  color: black;
+  font-size: 1.5vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .smallTileTextContainer{
+  height: 27%;
+  width: 100%;
+  padding: 2% 2% 2% 2%;
+}
+
+.portrait .normalTileMainContainer{
+  height: 100%;
+  width: 100%;
+}
+
+.portrait .normalTileGridContainer{
+  padding: 1% 1% 1% 1%;
+  height: 100%;
+  width: 73%;
+}
+
+.portrait .normalTileTableHeader{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.portrait .normalTileHeaderText{
+  color: #C9C8C8;
+  font-size: 1.5vh;
+}
+
+.portrait .normalTileMiddleContainer{
+  border-bottom: dashed;
+  border-color: #C9C8C8;
+  border-width: 1px;
+  height: 60%;
+  width: 100%;
+  text-align: left;
+  padding-top: 1%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-bottom: 1%;
+}
+
+.portrait .normalTileMiddleText {
+  color: black;
+  font-size: 1.8vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .normalTileTileFooter{
+  height: 30%;
+  width: 100%;
+}
+
+.portrait .normalTileFooterValueContainer{
+  height: 100%;
+  width: 33.3%;
+}
+
+.portrait .normalTileFooterText{
+  font-size: 1.6vh;
+  color: #9d9c9c;
+}
+
+.portrait .normalTileFooterTextContainer{
+  padding-left: 2%;
+  height: 100%;
+  width: 82%;
+}
+
+.portrait .normalTileImageContainer{
+  height: 100%;
+  width: 27%;
+}
+
+.portrait .normalTileIcon {
+  height: 100%;
+  width: 18%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.portrait .gridListSize{
+  height: 94% !important;
+  width: 94% !important;
+}
+
+.portrait .bigTileMainContainer{
+  height: 100%;
+  width: 100%;
+}
+
+.portrait .bigTileImageContainer{
+  height: 84.5%;
+  width: 100%;
+}
+
+.portrait .bigTileImageContainer2{
+  height: 55%;
+  width: 100%;
+}
+
+.portrait .bigTileDateContainer{
+  height: 7%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7) ;
+}
+
+.portrait .bigTileDateText{
+  color: black;
+  font-size: 1.5vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .bigTilePostTextContainer{
+  height: 8.5%;
+  width: 100%;
+  padding: 1% 1% 1% 1%;
+}
+
+.portrait .bigTilePostTextContainer2{
+  height: 38%;
+  width: 100%;
+  padding: 1% 1% 1% 1%;
+}
+
+.portrait .bigTilePostText{
+  color: black;
+  font-size: 1.5vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .bigTilePostText2{
+  color: black;
+  font-size: 2vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+
+.portrait .bigTileMainValueContainer{
+  height: 7%;
+  width: 100%;
+}
+
+.portrait .bigTileValueContainer{
+  height: 100%;
+  width: 33.3%;
+}
+
+.portrait .bigTileIcon{
+  height: 100%;
+  width: 18%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.portrait .bigTileFooterTextContainer{
+  padding-left: 2%;
+  height: 100%;
+  width: 82%;
+}
+
+.portrait .bigTileFooterText{
+  font-size: 1.6vh;
+  color: #9d9c9c;
+}
+
+.portrait .bigTileFooterTextSmall{
+  font-size: 3vh;
+  color: #9d9c9c;
+}
+
+
+/* ---------- Post Grid general Styles ---------- */
+
+.postGridTileFormat {
+  background-color: white;
+  box-shadow: 2px 2px 2px #888888;
+}
+
+.postGridTileFormatFade.ng-enter {
+  animation: fadeIn 1s;
+}
+
+.postGridTileFormatFade.ng-leave {
+  animation: fadeOut 1s;
+}
+
+.postGridTileFormatBounce.ng-enter {
+  animation: bounceIn 1s;
+}
+
+.postGridTileFormatBounce.ng-leave {
+  animation: fadeOut 1s;
+}
+
+.postGridTileFormatRotate.ng-enter {
+  animation: rotateIn 1s;
+}
+
+.postGridTileFormatRotate.ng-leave {
+  animation: fadeOut 1s;
+}
+
+.postGridTileFormatZoom.ng-enter {
+  animation: zoomIn 1s;
+}
+
+.postGridTileFormatZoom.ng-leave {
+  animation: fadeOut 1s;
+}
+
+.postGridTileFormatFlip.ng-enter {
+  animation: flipInX 1s;
+}
+
+.postGridTileFormatFlip.ng-leave {
+  animation: fadeOut 1s;
+}
+
+.postGridTileMainContainer {
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.postGridTileIcon1 {
+  height: 100%;
+  width: 25%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.postGridTileIcon2 {
+  height: 100%;
+  width: 25%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.postGridTileIcon3 {
+  height: 100%;
+  width: 25%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.postGridTileIcon1Big {
+  height: 100%;
+  width: 50%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.postGridTileIcon2Big {
+  height: 100%;
+  width: 30%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.postGridTileIcon3Big {
+  height: 100%;
+  width: 30%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+/* ---------- General styles ---------- */
+
+.maxSize{
+  height: 100%;
+  width: 100%;
+}
+
+.gridListSize{
+  height: 94% !important;
+  width: 98% !important;
+}
+
+#loading-bar .bar {
+  background: #2c3e50;
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #2c3e50;
+  border-left-color: #2c3e50;
+}
+#loading-bar .peg {
+  -moz-box-shadow: #2c3e50 1px 0 6px 1px;
+  -ms-box-shadow: #2c3e50 1px 0 6px 1px;
+  -webkit-box-shadow: #2c3e50 1px 0 6px 1px;
+  box-shadow: #2c3e50 1px 0 6px 1px;
+}
+
+/* ---------- Error Page ---------- */
+.errorPageContainer{
+  height: 100%;
+  width:100%;
+  background-image: url(../assets/errorPage.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

@@ -92,8 +92,6 @@ app.config(function ($mdThemingProvider) {
     window.addEventListener('scala', function () {
       // Get config file
       app.value('config', scala.app.config);
-      // Get EXP-CORE base URL
-      app.value('url', scala.config.host);
       angular.bootstrap(document.body, [app.name], {});
     });
   }()

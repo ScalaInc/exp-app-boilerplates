@@ -1,0 +1,49 @@
+body {
+  background: #000;
+  overflow: hidden;
+}
+
+#viewport {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+#slideshow {
+  background: #444;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+
+.slide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #444;    
+    overflow: hidden;    
+}
+.asset {
+    height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+iframe.asset{
+    border: none;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+#loading-image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

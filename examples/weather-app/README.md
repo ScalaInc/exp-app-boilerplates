@@ -1,6 +1,6 @@
 Configuration structure for the application
 
-* **feed_configuration**    : includes the path to the weather feed from EXP-CORE and a id to connect to
+* **feed_configuration**    : includes the path to the weather feed from EXP-CORE and a uuid to connect to
 * **refresh_rate_seconds**  : the app refreshes the data from the feed url every X seconds
 * **date_format**           : Format of the date on the screen see Angular date formats
 * **icon_set**              : folder name in the assets/icons folder that contains the icons, you can add folders here with > different icon sets. Names of the files is listed in the API feed. Resolution on 500 × 460
@@ -13,8 +13,8 @@ Configuration JSON Example:
 ```
 {
   "feed_configuration": {
-    "path": "api/connectors/feeds/weather"
-    "search_id": "302"
+    "path": "api/connectors/feeds"
+    "uuid": "2885366a-3d4a-4c40-a20e-d9c8d315455b"
   },
   "refresh_rate_seconds": "900",
   "date_format": "EEEE",

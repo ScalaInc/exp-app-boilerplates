@@ -1,0 +1,15 @@
+[
+  { "name":"pairing", "uuid": "1d6c210f-21ee-4f57-8b35-121ba80ce0b1", "type": "system" },
+  { "name":"default", "uuid": "12a1b3b6-ac03-46e1-98fe-58a3927bfe0f", "type": "system" },
+
+  { "name":"status", "uuid": "df01e8a8-0a3a-4e95-a86f-867725385e9d", "type": "static" },
+
+  { "name":"embed", "uuid": "f2520731-8973-4cc6-bba1-87ba1fe17555", "type": "configurable" },
+  { "name":"image", "uuid": "a71a9963-b22b-4e59-8b1b-7380296082a9", "type": "configurable" },
+  { "name":"slideshow", "uuid": "e115f1d3-f5a8-4151-9428-a995435eacaa", "type": "configurable" },
+  { "name":"socialmedia-app", "uuid": "8370e688-e70a-4cd8-b7a8-6769b5f475bd", "type": "configurable" },
+  { "name":"twitter-feed", "uuid": "a2e86944-cdd3-4742-8fb2-6a1be109c4db", "type": "configurable" },
+  { "name":"video", "uuid": "1290126c-a06d-4520-a547-1719c48aa9eb", "type": "configurable" },
+  { "name":"weather-app", "uuid": "b1e38132-5911-4b16-b2ad-30600b8298c8", "type": "configurable" },
+  { "name":"youtube", "uuid": "16215708-0471-4b61-8ead-3e5dbe34c2a1", "type": "configurable" }
+]

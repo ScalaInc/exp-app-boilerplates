@@ -1,0 +1,17 @@
+{
+   "name":"Youtube Experience",
+   "icon":"youtube-play",
+   "background":"red",
+   "configTypes":[
+      {
+         "name":"videoId",
+         "type":"text",
+         "label":"Video URL or ID",
+         "required":true,
+         "path":"videoId"
+      }
+   ],
+   "config":{
+      "videoId":null
+   }
+}

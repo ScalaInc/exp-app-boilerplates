@@ -1,0 +1,18 @@
+{
+   "name":"Image Experience",
+   "icon":"image-area",
+   "background":"orange",
+   "configTypes":[
+      {
+         "name":"imageFile",
+         "type":"image",
+         "fileTypes":"image/*",
+         "label":"Add App Image",
+         "required":true,
+         "path":"src"
+      }
+   ],
+   "config":{
+      "src":null
+   }
+}

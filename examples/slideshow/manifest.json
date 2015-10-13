@@ -1,0 +1,33 @@
+{
+   "name":"Slideshow",
+   "icon":"image-area",
+   "background":"green",
+   "uuid":"fake-experience-uuid-01",
+   "url":"apps/slideshow/index.html",
+   "configTypes":[
+      {
+         "name":"assets",
+         "type":"text",
+         "label":"Comma Delimited Absolute URLS",
+         "required":true,
+         "path":"assets"
+      },
+      {
+         "name":"duration",
+         "type":"text",
+         "label":"Image Duration (seconds)",
+         "required":true,
+         "path":"duration"
+      },
+      {
+         "name":"transition",
+         "type":"text",
+         "label":"Transition (fade, slide, cube)",
+         "required":true,
+         "path":"transition.name"
+      }
+   ],
+   "config":{
+
+   }
+}

@@ -1,0 +1,17 @@
+{
+   "name":"Web Experience",
+   "icon":"web",
+   "background":"green",
+   "configTypes":[
+      {
+         "name":"urlToEmbed",
+         "type":"url",
+         "label":"URL to Embed",
+         "required":true,
+         "path":"src"
+      }
+   ],
+   "config":{
+      "src":null
+   }
+}

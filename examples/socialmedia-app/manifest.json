@@ -1,0 +1,141 @@
+{
+   "name":"Social Media Experience",
+   "icon":"share-variant",
+   "background":"blue",
+   "configTypes":[
+      {
+         "name":"feedId",
+         "type":"text",
+         "label":"Feed UUID",
+         "required":true,
+         "path":"feed_configuration.uuid"
+      },
+      {
+         "name":"dateFormat",
+         "type":"select",
+         "label":"Date Format",
+         "required":true,
+         "path":"date_format",
+         "options":[
+            {
+               "label":"EU date format",
+               "value":"dd-MM-yyyy HH:mm:ss"
+            },
+            {
+               "label":"US date format",
+               "value":"MM-dd-yyyy HH:mm:ss"
+            }
+         ]
+      },
+      {
+         "name":"textSearchId",
+         "type":"text",
+         "label":"Include Item Text Search",
+         "required":false,
+         "path":"include_item_text_search"
+      },
+      {
+         "name":"refreshRateId",
+         "type":"text",
+         "label":"Refresh Rate (seconds)",
+         "required":true,
+         "path":"refresh_rate_seconds"
+      },
+      {
+         "name":"effect",
+         "type":"select",
+         "label":"tile animation",
+         "required":false,
+         "path":"effect",
+         "options":[
+            {
+               "label":"bounce",
+               "value":"bounce"
+            },
+            {
+               "label":"fade",
+               "value":"fade"
+            },
+            {
+               "label":"rotate",
+               "value":"rotate"
+            },
+            {
+               "label":"zoom",
+               "value":"zoom"
+            },
+            {
+               "label":"flip",
+               "value":"flip"
+            }
+         ]
+      },
+      {
+         "name":"sideBars",
+         "type":"select",
+         "label":"page side bars",
+         "required":true,
+         "path":"side_bars",
+         "options":[
+            {
+               "label":"visible",
+               "value":false
+            },
+            {
+               "label":"hide",
+               "value":true
+            }
+         ]
+      },
+      {
+         "name":"tileSize",
+         "type":"select",
+         "label":"tile size",
+         "required":true,
+         "path":"tile_size",
+         "options":[
+            {
+               "label":"small",
+               "value":"small"
+            },
+            {
+               "label":"normal",
+               "value":"normal"
+            },
+            {
+               "label":"big",
+               "value":"big"
+            }
+         ]
+      },
+      {
+         "name":"imageLandscapeFile",
+         "type":"image",
+         "fileTypes":"image/*",
+         "label":"Cover Image Landscape",
+         "required":false,
+         "path":"cover_image_landscape"
+      },
+      {
+         "name":"imagePortraitFile",
+         "type":"image",
+         "fileTypes":"image/*",
+         "label":"Cover Image Portrait",
+         "required":false,
+         "path":"cover_image_portrait"
+      },
+      {
+         "name":"logoFile",
+         "type":"image",
+         "fileTypes":"image/*",
+         "label":"Page Logo",
+         "required":false,
+         "path":"page_logo"
+      }
+   ],
+   "config":{
+      "feed_configuration":{
+         "path":"api/connectors/feeds"
+      }
+   }
+}

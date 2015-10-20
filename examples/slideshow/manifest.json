@@ -2,8 +2,6 @@
    "name":"Slideshow",
    "icon":"image-area",
    "background":"green",
-   "uuid":"fake-experience-uuid-01",
-   "url":"apps/slideshow/index.html",
    "configTypes":[
       {
          "name":"assets",

@@ -1,31 +1,32 @@
 {
-   "name":"Slideshow",
-   "icon":"image-area",
-   "background":"green",
-   "configTypes":[
-      {
-         "name":"assets",
-         "type":"text",
-         "label":"Comma Delimited Absolute URLS",
-         "required":true,
-         "path":"assets"
-      },
-      {
-         "name":"duration",
-         "type":"text",
-         "label":"Image Duration (seconds)",
-         "required":true,
-         "path":"duration"
-      },
-      {
-         "name":"transition",
-         "type":"text",
-         "label":"Transition (fade, slide, cube)",
-         "required":true,
-         "path":"transition.name"
-      }
-   ],
-   "config":{
-
-   }
+  "name": "Slideshow",
+  "icon": "image-area",
+  "background": "green",
+  "configItems": [
+    { "name": "duration", "type": "text", "label": "Image Duration (seconds)", "required": true, "path": "duration" },
+    {
+      "name": "transition",
+      "type": "select",
+      "label": "Transition",
+      "required": true,
+      "path": "transition.name",
+      "options": [
+        {
+          "label": "Cube",
+          "value": "cube"
+        },
+        {
+          "label": "Slide",
+          "value": "slide"
+        },
+        {
+          "label": "Fade",
+          "value": "fade"
+        }
+      ]
+    },
+    { "name": "addAny", "type": "mediaArray", "multiItem": true, "fileTypes": "image/*,video/*", "label": "Add Media", "required": true, "path": "src" },
+    { "name": "addAny", "type": "any", "options": ["url","image","video", "mediaArray"], "label": "Slideshow Item", "path": "src" }
+  ],
+  "config": {}
 }

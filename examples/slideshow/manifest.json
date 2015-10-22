@@ -2,7 +2,7 @@
   "name": "Slideshow",
   "icon": "image-area",
   "background": "green",
-  "configItems": [
+  "configTypes": [
     { "name": "duration", "type": "text", "label": "Image Duration (seconds)", "required": true, "path": "duration" },
     {
       "name": "transition",

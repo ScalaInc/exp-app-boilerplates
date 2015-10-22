@@ -19,7 +19,7 @@ function Slide (src) {
     readyEvents = 'load';
     errorEvents = 'error';
     self.assetType = 'image';
-  } else if (/\.(mp4|avi|3gp|webm)$/i.test(src)) {    
+  } else if (/\.(mp4|avi|3gp|webm)$/i.test(src)) {
     assetTag = '<video/>';
     readyEvents = 'canplay';
     errorEvents = 'error abort';
@@ -28,7 +28,7 @@ function Slide (src) {
     assetTag = '<iframe/>';
     readyEvents = 'load';
     self.assetType = 'frame';
-  } 
+  }
 
   self.reset = function () {
     clearTimeout(timeout);
@@ -38,15 +38,15 @@ function Slide (src) {
 
 
   self.loadAsset = function () {
-    
+
     function onReady () {
       console.log('Slide ready for playback.', src);
       self.isReady = true;
       clearTimeout(timeout);
-    }    
+    }
     function onError () {
       console.log('Slide failed to load.', src);
-      self.isReady = false;
+      //self.isReady = false;
       clearTimeout(timeout);
     }
     console.log('Loading asset.', src);
@@ -74,7 +74,7 @@ function Slide (src) {
     self.slide.css('opacity', 0);
   };
 
- 
+
 }
 
 var slides = [];
@@ -85,36 +85,64 @@ window.addEventListener('load', function () {
 });
 
 var transition;
-
+var doUnload = false;
 
 window.addEventListener('scala', function () {
-  setTimeout(function () {
-    // Create a slide for each asset.
-    scala.app.config.assets.split(',').forEach(function (src) {
-      var slide = new Slide(src);
-      slide.loadAsset();
-      slides.push(slide);
-    });
-    
-    // Default transition.
-    transition = window.transitions.fade;
-    
-    // Get configured transition.
-    if (scala.app.config.transition && scala.app.config.transition.name) {
-      if (window.transitions[scala.app.config.transition.name]) {
-        transition = window.transitions[scala.app.config.transition.name];
-      }
+
+  // Start the slideshow when play event fires.
+  scala.app.runtime.on('load', function () {
+
+    if ( scala.app.config.src && !Array.isArray(scala.app.config.src) ) {
+      scala.app.config.src = [scala.app.config.src];
     }
-    
-    // Configure the transition.
-    transition.configure({
-      slides: slides,
-      config: scala.app.config.transition
+
+    // Create a slide for each asset.
+    return Promise.all(scala.app.config.src.map( function (uuid) {
+      return scala.api.getContentNode(uuid);
+    }))
+    .then( function (data) {
+
+      // take the promise.all data, which has no guaranteed order, and enforce
+      // the order of uuid's from `scala.app.config.src`
+      srcArray = scala.app.config.src.map( function (uuid) {
+        var index = data.findIndex( function (content) {
+          return content.document.uuid === uuid;
+        }, uuid)
+        return data[index];
+      }, data);
+
+      // iterate over the ordered array of content nodes, create new slides by path
+      srcArray.forEach(function (src) {
+        var srcPath = scala.config.host + '/api/delivery' + escape(src.document.path);
+        var slide = new Slide(srcPath);
+        slide.loadAsset();
+        slides.push(slide);
+      });
+
+      // Default transition.
+      transition = window.transitions.fade;
+
+      // Get configured transition.
+      if (scala.app.config.transition && scala.app.config.transition.name) {
+        if (window.transitions[scala.app.config.transition.name]) {
+          transition = window.transitions[scala.app.config.transition.name];
+        }
+      }
+
+      // Configure the transition.
+      transition.configure({
+        slides: slides,
+        config: scala.app.config.transition
+      });
+
     });
-    
-    // Start the slideshow.
-    digest();
   });
+
+  scala.app.runtime.on('play', digest);
+  scala.app.runtime.on('unload', function () {
+    doUnload = true; // Indicate that the app is unloading.
+  });
+
 
 });
 
@@ -123,11 +151,12 @@ window.addEventListener('scala', function () {
 var current;
 var next;
 function digest () {
+  if (doUnload) return; // Stop everything if the app is unloading.
   if (current === undefined && next === undefined) {
     next = 0;
   } else {
     next++;
-  } 
+  }
   if (next === slides.length) next = 0;
   if (next === current) {
     wait();
@@ -153,18 +182,30 @@ function wait () {
   document.getElementById('viewport').style.display = 'block';
   if (slide.assetType === 'video') {
     slide.$asset[0].currentTime = 0;
-    slide.$asset[0].play();
-    slide.$asset.on('ended', function () {
+    if (slide.$asset[0].error) {
+      return setTimeout(function () {
+        slide.$asset[0].load();
+        slide.$asset[0].pause();
+        digest();
+      }, 2000);
+    }
+    var stop = function (err) {
       slide.$asset.off('ended');
+      slide.$asset.off('abort');
+      slide.$asset.off('error');
       setTimeout(function () {
         if (slide.$asset[0].ended) {
-          slide.$asset[0].currentTime = 0;          
+          slide.$asset[0].currentTime = 0;
           slide.$asset[0].load();
         }
       }, 2000);
       digest();
-    });    
-  } else {;
+    };
+    slide.$asset.on('abort', stop);
+    slide.$asset.on('error', stop);
+    slide.$asset.on('ended', stop);
+    slide.$asset[0].play();
+  } else {
     setTimeout(digest, (parseFloat(scala.app.config.duration) || 1) * 1000);
   }
 }

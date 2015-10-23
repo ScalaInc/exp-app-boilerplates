@@ -3,7 +3,13 @@
   "icon": "image-area",
   "background": "green",
   "configTypes": [
-    { "name": "duration", "type": "text", "label": "Image Duration (seconds)", "required": true, "path": "duration" },
+    {
+      "name": "duration",
+      "type": "text",
+      "label": "Image Duration (seconds)",
+      "required": true,
+      "path": "duration"
+    },
     {
       "name": "transition",
       "type": "select",
@@ -25,8 +31,16 @@
         }
       ]
     },
-    { "name": "addAny", "type": "mediaArray", "multiItem": true, "fileTypes": "image/*,video/*", "label": "Add Media", "required": true, "path": "src" },
-    { "name": "addAny", "type": "any", "options": ["url","image","video", "mediaArray"], "label": "Slideshow Item", "path": "src" }
+    {
+      "name": "addAny",
+      "type": "mediaArray",
+      "multiItem": true,
+      "fileTypes":
+      "image/*,video/*",
+      "label": "Add Media",
+      "required": true,
+      "path": "src"
+    }
   ],
   "config": {}
 }

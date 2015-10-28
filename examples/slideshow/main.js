@@ -122,7 +122,7 @@ window.addEventListener('scala', function () {
 
       // iterate over the ordered array of content nodes, create new slides by path
       srcArray.forEach(function (src) {
-        var srcPath = src.getUrl();
+        var srcPath = src.hasVariant('vector.svg') ? src.getVariantUrl('vector.svg') : src.hasVariant('video.mp4') ? src.getVariantUrl('video.mp4') : src.getUrl();
 
         // check for youtube urls
         var matches = re.exec(srcPath);

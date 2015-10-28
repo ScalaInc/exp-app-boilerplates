@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="node_modules/exp-js-sdk/build/webbrowser/scala-sdk.js"></script>
+    <script type="text/javascript" src="player.js"></script>
+  </head>
+  <body>
+    <div id="experience"></div>
+
+    <!-- initialize the EXP SDK -->
+    <script type="text/javascript">
+      // the url of the app to play
+      var appUrl = 'examples/slideshow/index.html';
+
+      // the config to pass to the app
+      var appConfig = {
+        src: [
+          '01985c78-5315-46de-8d92-a0b90029ce1a',
+          '079f6795-945f-439e-92e4-07845e709bff',
+          '3819ce73-4a71-4c98-8ca2-41b30780da91'
+        ],
+        duration: 10,
+        transition: {
+          name: 'fade'
+        }
+      };
+
+      // login
+      exp.runtime.start({
+        host: 'https://api-develop.exp.scala.com',
+        uuid: 'c924c7c2-bca0-4d2a-9cc1-dc5ce79d423f', // Device uuid.
+        secret: 'peanut butter jelly time' // Device secret
+      })
+      .then(function() {
+        console.log('connected to exp');
+
+        new MockPlayer(appUrl, appConfig);
+      })
+      .catch(function(err) {
+        console.log('not connected to exp');
+        console.error(err);
+      });
+    </script>
+  </body>
+</html>
+

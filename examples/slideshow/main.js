@@ -24,6 +24,11 @@ function Slide (src) {
     readyEvents = 'canplay';
     errorEvents = 'error abort';
     self.assetType = 'video';
+  } else if (/^youtube\/index\.html/.test(src)) {
+    assetTag = '<iframe/>';
+    readyEvents = 'load';
+    errorEvents = 'error abort';
+    self.assetType = 'youtube';
   } else {
     assetTag = '<iframe/>';
     readyEvents = 'load';
@@ -44,13 +49,16 @@ function Slide (src) {
       self.isReady = true;
       clearTimeout(timeout);
     }
+
     function onError () {
       console.log('Slide failed to load.', src);
       //self.isReady = false;
       clearTimeout(timeout);
     }
+
     console.log('Loading asset.', src);
     self.isReady = false;
+
     clearTimeout(timeout);
     self.$asset = $(assetTag)
       .addClass('asset')
@@ -58,6 +66,7 @@ function Slide (src) {
       .on(errorEvents, onError)
       .attr('src', src)
       .appendTo(self.$element);
+
     if (self.assetType === 'frame') {
       self.$asset.attr('scrolling', 'no');
     }
@@ -74,9 +83,9 @@ function Slide (src) {
     self.slide.css('opacity', 0);
   };
 
-
 }
 
+var re = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
 var slides = [];
 
 window.addEventListener('load', function () {
@@ -100,12 +109,12 @@ window.addEventListener('scala', function () {
     return Promise.all(scala.app.config.src.map( function (uuid) {
       return scala.api.getContentNode(uuid);
     }))
-    .then( function (data) {
+    .then(function (data) {
 
       // take the promise.all data, which has no guaranteed order, and enforce
       // the order of uuid's from `scala.app.config.src`
-      srcArray = scala.app.config.src.map( function (uuid) {
-        var index = data.findIndex( function (content) {
+      srcArray = scala.app.config.src.map(function (uuid) {
+        var index = data.findIndex(function (content) {
           return content.document.uuid === uuid;
         }, uuid)
         return data[index];
@@ -113,7 +122,15 @@ window.addEventListener('scala', function () {
 
       // iterate over the ordered array of content nodes, create new slides by path
       srcArray.forEach(function (src) {
-        var srcPath = scala.config.host + '/api/delivery' + escape(src.document.path);
+        var srcPath = src.getUrl();
+
+        // check for youtube urls
+        var matches = re.exec(srcPath);
+        if (matches && matches[1]) {
+          var videoId = matches[1];
+          srcPath = 'youtube/index.html?videoId=' + videoId;
+        }
+
         var slide = new Slide(srcPath);
         slide.loadAsset();
         slides.push(slide);
@@ -142,7 +159,6 @@ window.addEventListener('scala', function () {
   scala.app.runtime.on('unload', function () {
     doUnload = true; // Indicate that the app is unloading.
   });
-
 
 });
 
@@ -205,6 +221,20 @@ function wait () {
     slide.$asset.on('error', stop);
     slide.$asset.on('ended', stop);
     slide.$asset[0].play();
+  } else if (slide.assetType === 'youtube') {
+    var done = function(e) {
+      // remove this handler
+      e.target.removeEventListener(e.type, arguments.callee);
+      digest();
+    };
+    slide.$asset[0].contentWindow.addEventListener('ended', done);
+    slide.$asset[0].contentWindow.addEventListener('error', done);
+
+    if (slide.$asset[0].contentWindow.playerReady) {
+      slide.$asset[0].contentWindow.player.playVideo();
+    } else {
+      digest();
+    }
   } else {
     setTimeout(digest, (parseFloat(scala.app.config.duration) || 1) * 1000);
   }

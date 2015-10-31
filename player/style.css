@@ -1,0 +1,17 @@
+html,body,#experience {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#experience{
+  background: #000000;
+  z-index: 1;
+}
+#experience iframe{
+  transition: opacity 1s;
+  border: none;
+}

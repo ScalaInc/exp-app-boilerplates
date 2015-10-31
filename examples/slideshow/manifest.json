@@ -30,16 +30,6 @@
           "value": "fade"
         }
       ]
-    },
-    {
-      "name": "addAny",
-      "type": "mediaArray",
-      "multiItem": true,
-      "fileTypes":
-      "image/*,video/*",
-      "label": "Add Media",
-      "required": true,
-      "path": "src"
     }
   ],
   "config": {}

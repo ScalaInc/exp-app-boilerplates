@@ -36,7 +36,7 @@
       "type": "mediaArray",
       "multiItem": true,
       "fileTypes":
-      "image/*,video/*",
+      "image/*,video/*,application/postscript",
       "label": "Add Media",
       "required": true,
       "path": "src"

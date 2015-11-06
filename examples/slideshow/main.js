@@ -233,7 +233,7 @@ function wait () {
     if (slide.$asset[0].contentWindow.playerReady) {
       slide.$asset[0].contentWindow.player.playVideo();
     } else {
-      digest();
+      setTimeout(digest, 500);
     }
   } else {
     setTimeout(digest, (parseFloat(scala.app.config.duration) || 1) * 1000);

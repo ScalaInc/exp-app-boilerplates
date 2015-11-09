@@ -113,12 +113,17 @@ window.addEventListener('scala', function () {
 
       // take the promise.all data, which has no guaranteed order, and enforce
       // the order of uuid's from `scala.app.config.src`
-      srcArray = scala.app.config.src.map(function (uuid) {
+      /*srcArray = scala.app.config.src.map(function (uuid) {
+        
         var index = data.findIndex(function (content) {
           return content.document.uuid === uuid;
         }, uuid)
+
         return data[index];
-      }, data);
+      }, data);*/
+
+      // Promise.all should preserve order. -JD
+      srcArray = data;
 
       // iterate over the ordered array of content nodes, create new slides by path
       srcArray.forEach(function (src) {

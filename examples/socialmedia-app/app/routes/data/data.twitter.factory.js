@@ -110,7 +110,7 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
             item.rowspan = 1;
 
             // adding media items from post
-            if (post_item.hasOwnProperty('media')) {
+            if (post_item.media.length > 0) {
               lodash.forEach(post_item.media, function (mediaItem) {
                 tempMedia = {};
                 tempMedia.style = {

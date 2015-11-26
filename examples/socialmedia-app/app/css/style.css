@@ -147,7 +147,16 @@
 
 .landscape .smallTileText{
   color: black;
-  font-size: 1.5vh;
+  font-size: 1.2vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.landscape .smallTileText2{
+  color: black;
+  font-size: 1.7vh;
   line-height: 1;
   margin-top: 0em;
   margin-bottom: 0em;
@@ -558,7 +567,7 @@
 }
 
 .portrait .smallTileImageContainer{
-  height:73%;
+  height: 86%;
   width: 100%;
 }
 
@@ -570,6 +579,15 @@
 
 .portrait .smallTileText{
   color: black;
+  font-size: 1.2vh;
+  line-height: 1;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  line-height: 1 !important;
+}
+
+.portrait .smallTileText2{
+  color: black;
   font-size: 1.5vh;
   line-height: 1;
   margin-top: 0em;
@@ -578,7 +596,7 @@
 }
 
 .portrait .smallTileTextContainer{
-  height: 27%;
+  height: 14%;
   width: 100%;
   padding: 2% 2% 2% 2%;
 }

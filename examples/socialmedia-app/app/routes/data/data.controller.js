@@ -73,7 +73,7 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
         }
         if ($scope.tileSize === 'normal') {
 
-          descriptionTextSize = 55;
+          descriptionTextSize = 140;
           $scope.start(8, LANDSCAPE);
           $scope.gridRowHeight = '24%';
           $scope.gridColumns = 2;
@@ -101,7 +101,7 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
         }
         if ($scope.tileSize === 'normal') {
 
-          descriptionTextSize = 120;
+          descriptionTextSize = 240;
           $scope.start(6, LANDSCAPE);
           $scope.gridRowHeight = '32%';
           $scope.gridColumns = 2;
@@ -151,7 +151,7 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
         }
         if ($scope.tileSize === 'normal') {
 
-          descriptionTextSize = 55;
+          descriptionTextSize = 140;
           $scope.start(6, PORTRAIT);
           $scope.gridRowHeight = '15%';
           $scope.gridColumns = 1;
@@ -159,7 +159,7 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
         }
         if ($scope.tileSize === 'small') {
 
-          descriptionTextSize = 55;
+          descriptionTextSize = 30;
           $scope.start(12, PORTRAIT);
           $scope.gridRowHeight = '24%';
           $scope.gridColumns = 3;

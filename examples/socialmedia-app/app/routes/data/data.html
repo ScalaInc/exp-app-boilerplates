@@ -217,13 +217,24 @@
           <!-- small tile -->
           <md-grid-tile id="small" class="postGridTileFormat" ng-class="effect" ng-repeat="item in postItems" md-rowspan="1" ng-if="tileSize === 'small'">
           <div layout="column" class="smallTileMainContainer">
-              <div class="smallTileImageContainer" ng-style="item.mediaItems[0].style">
+              <div class="smallTileImageContainer" ng-style="item.mediaItems[0].style" ng-if="item.imageFound">
                 <div class="smallTileDateContainer" layout="column" layout-align="center center">
                   <label class="md-caption smallTileText">{{item.creationDate | date : item.dateFormat}}</label>
                 </div>
               </div>
-              <div class="smallTileTextContainer">
-                <p class="md-subhead smallTileText">{{item.text}}</p>
+              <div class="smallTileImageContainer" ng-style="item.textBackground" ng-if="item.imageFound === false">
+                <div class="smallTileDateContainer" layout="column" layout-align="center center">
+                  <label class="md-caption smallTileText">{{item.creationDate | date : item.dateFormat}}</label>
+                </div>
+				<div style="height:93%;text-align:left;padding:5%">
+					<p class="md-subhead smallTileText2">{{item.fullText}}</p>
+				</div>
+              </div>
+              <div class="smallTileTextContainer" layout="row">
+                <div style="width:10%;height:100%" ng-style="item.providerLogo"></div>
+				<div style="width:80%;height:100%;padding: 0% 0% 0% 2%">
+					<p class="md-subhead smallTileText" ng-if="item.imageFound">{{item.text}}</p>
+				</div>
               </div>
             </div>
           </md-grid-tile>

@@ -92,7 +92,8 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash',
             // adding general post information
             item.creationDate = post_item.creation_date;
             item.dateFormat = config.date_format;
-            item.text = formatText(post_item.text, descriptionTextSize);
+			item.text = formatText(post_item.text, descriptionTextSize);
+			item.fullText = post_item.text;
             item.value1Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_like.svg)'};
             item.value1 = post_item.likes + ' likes';
             item.value2Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_comments.svg)'};
@@ -100,17 +101,22 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash',
             item.value3Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_followers.svg)'};
             item.value3 = instagramData.profile.name;
             item.rowspan = 1;
+			item.textBackground = {'background-color': 'WhiteSmoke'};
+			item.providerLogo = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};
+			
 
             // adding media item from post
-            tempMedia = {};
+			tempMedia = {};
+			item.imageFound = true;
             tempMedia.style = {
               'background-image': 'url(' + post_item.image_url_standard + ')',
               'background-size': 'cover',
               'background-position': 'center',
               'background-repeat': 'no-repeat'
             };
-            tempMedia.type = post_item.type;
-            item.mediaItems.push(tempMedia);
+			tempMedia.type = post_item.type;
+            
+			item.mediaItems.push(tempMedia);
 
             // Adding item to feed list
             returnFeed.items.push(item);

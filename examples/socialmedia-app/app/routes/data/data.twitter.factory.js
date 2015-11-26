@@ -98,19 +98,23 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
             item.mediaItems = [];
 
             // adding general post information
+			item.text = formatText(post_item.text, descriptionTextSize);
+			item.fullText = post_item.text
             item.creationDate = post_item.date;
             item.dateFormat = config.date_format;
-            item.text = formatText(post_item.text, descriptionTextSize);
-            item.value1Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_tweets.svg)'};
+			item.value1Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_tweets.svg)'};
             item.value1 = post_item.retweets + ' retweets';
             item.value2Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_favorites.svg)'};
             item.value2 = post_item.favorites + ' favorites';
             item.value3Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_followers.svg)'};
             item.value3 = twitterData.profile.name;
             item.rowspan = 1;
+			item.textBackground = {'background-color': 'WhiteSmoke'};
+			item.providerLogo = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};
 
-            // adding media items from post
+			// adding media items from post
             if (post_item.media.length > 0) {
+			  item.imageFound = true;
               lodash.forEach(post_item.media, function (mediaItem) {
                 tempMedia = {};
                 tempMedia.style = {
@@ -123,13 +127,14 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
                 item.mediaItems.push(tempMedia);
               });
             } else { // adding page logo if no media exits
+			  item.imageFound = false;
               tempMedia = {};
               tempMedia.style = {
-                'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_logo2.svg)',
-                'background-size': 'cover',
-                'background-position': 'center',
-                'background-repeat': 'no-repeat'
-              };
+				  'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_logo2.svg)',
+				  'background-size': 'cover',
+				  'background-position': 'center',
+				  'background-repeat': 'no-repeat'
+			  };
               tempMedia.type = 'image';
               item.mediaItems.push(tempMedia);
             }

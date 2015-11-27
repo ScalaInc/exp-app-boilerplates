@@ -70,8 +70,10 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
         };
         returnFeed.hasCover = false;
       }
-
-      // general feed info
+	  
+	  console.log(config.cover_image_landscape);
+      
+	  // general feed info
       returnFeed.logoOverlay = {
         'background-image': 'url(app/assets/' + facebookData.search.source + '/facebook_logo.svg)',
         'background-size': 'cover',
@@ -104,7 +106,8 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
             // adding general post information
             item.creationDate = post_item.creation_date;
             item.dateFormat = config.date_format;
-            item.text = formatText(post_item.text, descriptionTextSize);
+			item.text = formatText(post_item.text, descriptionTextSize);
+			item.fullText = post_item.text;
             item.value1Icon = {'background-image': 'url(app/assets/' + facebookData.search.source + '/facebook_like.svg)'};
             item.value1 = post_item.likes + ' likes';
             item.value2Icon = {'background-image': 'url(app/assets/' + facebookData.search.source + '/facebook_share.svg)'};
@@ -112,9 +115,12 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
             item.value3Icon = {'background-image': 'url(app/assets/' + facebookData.search.source + '/facebook_comments.svg)'};
             item.value3 = post_item.comments.length.toString() + ' comments';
             item.rowpan = 1;
-
-            // adding media items from post
-            if (post_item.hasOwnProperty('media')) {
+			item.textBackground = {'background-color': 'WhiteSmoke'};
+			item.providerLogo = {'background-image': 'url(app/assets/' + facebookData.search.source + '/facebook_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};
+			
+			// adding media items from post
+            if (post_item.media.length > 0) {
+			  item.imageFound = true;
               lodash.forEach(post_item.media, function (mediaItem) {
                 tempMedia = {};
                 tempMedia.style = {
@@ -127,6 +133,7 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
                 item.mediaItems.push(tempMedia);
               });
             } else { // adding page logo if no media exits
+              item.imageFound = false;
               tempMedia = {};
               tempMedia.style = {
                 'background-image': 'url(app/assets/' + facebookData.search.source + '/facebook_logo2.svg)',

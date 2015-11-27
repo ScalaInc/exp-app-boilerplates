@@ -5,7 +5,7 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash',
     // define the factory to return
     var factory = {};
 
-    factory.getInstagramFeed = function (instagramData, orientation, descriptionTextSize, aboutTextSize) {
+    factory.getInstagramFeed = function (instagramData, orientation, descriptionTextSize, aboutTextSize, URLList) {
       var returnFeed = {};
       returnFeed.items = [];
       var tempMedia = {};
@@ -14,9 +14,9 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash',
       // ------ page info ------
 
       // Get instagram logo or custom logo if no logo is found default to the instagram logo
-      if (config.hasOwnProperty('page_logo')) {
+      if (URLList.length > 0) {
         returnFeed.logo = {
-          'background-image': 'url(' + config.page_logo + ')',
+          'background-image': 'url(' + URLList[0] + ')',
           'background-size': 'cover',
           'background-repeat': 'no-repeat',
           'background-position': 'center'
@@ -38,17 +38,17 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash',
       }
 
       // setting cover image, if no image is found from user and instagram default to the instagram banner
-      if ((config.hasOwnProperty('cover_image_landscape')) && (orientation === 'landscape')) {
+      if ((URLList.length > 1) && (orientation === 'landscape')) {
         returnFeed.cover = {
-          'background-image': 'url(' + config.cover_image_landscape + ')',
+          'background-image': 'url(' + URLList[1]+ ')',
           'background-size': 'cover',
           'background-position': 'center',
           'background-repeat': 'no-repeat'
         };
         returnFeed.hasCover = true;
-      } else if ((config.hasOwnProperty('cover_image_portrait')) && (orientation === 'portrait')) {
+      } else if ((URLList.length > 2) && (orientation === 'portrait')) {
         returnFeed.cover = {
-          'background-image': 'url(' + config.cover_image_portrait + ')',
+          'background-image': 'url(' + URLList[2] + ')',
           'background-size': 'cover',
           'background-position': 'center',
           'background-repeat': 'no-repeat'

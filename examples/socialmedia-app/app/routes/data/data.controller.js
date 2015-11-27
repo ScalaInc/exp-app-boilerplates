@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactory', 'facebookFactory', 'twitterFactory', 'instagramFactory', '$location', 'config', 'lodash', function ($scope, $mdMedia, $interval, feedFactory, facebookFactory, twitterFactory, instagramFactory, $location, config, lodash) {
+app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactory', 'facebookFactory', 'twitterFactory', 'instagramFactory', '$location', 'config', 'lodash','$q', function ($scope, $mdMedia, $interval, feedFactory, facebookFactory, twitterFactory, instagramFactory, $location, config, lodash, $q) {
 
   // scope variables
   $scope.dataFeed = {};
@@ -216,11 +216,11 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
 
           // select the format of the data feed
           if (result.search.source === FACEBOOK) {
-            return facebookFactory.getFacebookFeed(result, orientation, descriptionTextSize, aboutTextSize);
+            return facebookFactory.getFacebookFeed(result, orientation, descriptionTextSize, aboutTextSize, getImageURLs());
           } else if (result.search.source === TWITTER) {
-            return twitterFactory.getTwitterFeed(result, orientation, descriptionTextSize, aboutTextSize);
+            return twitterFactory.getTwitterFeed(result, orientation, descriptionTextSize, aboutTextSize, getImageURLs());
           } else if (result.search.source === INSTAGRAM) {
-            return instagramFactory.getInstagramFeed(result, orientation, descriptionTextSize, aboutTextSize);
+            return instagramFactory.getInstagramFeed(result, orientation, descriptionTextSize, aboutTextSize, getImageURLs());
           }
 
         } else {
@@ -228,6 +228,44 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
         }
       });
   };
+
+  var getImageURLs = function(){
+
+    var promiseList =[];
+    var urlList = [];
+
+    if(config.page_logo.length > 0){
+      promiseList.push(scala.api.getContentNode(config.page_logo[0]))
+    }
+
+    if(config.cover_image_landscape.length > 0 ){
+      promiseList.push(scala.api.getContentNode(config.cover_image_landscape[0]))
+    }
+
+    if(config.cover_image_portrait.length > 0){
+      promiseList.push(scala.api.getContentNode(config.cover_image_portrait[0]))
+    }
+
+
+    if (promiseList.length>0){
+      $q.all([promiseList])
+          .then(function (values){
+            return values;
+          });
+    }else{
+      return [];
+    }
+
+  };
+
+
+  var getURL = function(UUID){
+    scala.api.getContentNode(contentUuidLandscapeUUID).then(function(content){
+      var src = content.getUrl();
+    });
+  };
+
+
 
   // get list of orientationIndex items from the current index to fill the html grid
   var generateTempPostList = function (maxIndex, feed, maxItems, orientation, p1, p2) {

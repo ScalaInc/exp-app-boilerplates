@@ -35,8 +35,7 @@
       "name": "addAny",
       "type": "mediaArray",
       "multiItem": true,
-      "fileTypes":
-      "image/*,video/*,application/postscript",
+      "fileTypes": "image/*,video/*,application/postscript",
       "label": "Add Media",
       "required": true,
       "path": "src"

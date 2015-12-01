@@ -247,7 +247,7 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
 
             if (config[fieldName].length > 0) {
 
-                scala.api.getContentNode(config[fieldName][0].uuid)
+                scala.api.getContentNode(config[fieldName].uuid)
                     .then(function (node) {
                         var tempUrl = node.getUrl();
 

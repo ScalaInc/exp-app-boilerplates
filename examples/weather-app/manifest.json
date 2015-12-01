@@ -52,15 +52,15 @@
          "path":"date_format",
          "options":[
             {
-               "label":"Day in Week, (Sunday-Saturday)",
+               "label":"Day of Week (Sunday - Saturday)",
                "value":"EEEE"
             },
             {
-               "label":"US Date, (10/03/2010)",
+               "label":"US Date, (MM/DD/YYYY)",
                "value":"MM/dd/yyyy"
             },
             {
-               "label":"EU Date, (03-10-2010)",
+               "label":"EU Date (DD-MM-YYYY)",
                "value":"dd-MM-yyyy"
             }
          ]

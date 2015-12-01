@@ -8,7 +8,8 @@
          "type":"feed",
          "label":"Feed",
          "required":true,
-         "path":"feed_configuration.uuid"
+         "path":"feed_configuration.uuid",
+         "supportedTypes": [ "scala:feed:weather" ]
       },
       {
          "name":"temperature",

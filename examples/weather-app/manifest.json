@@ -5,8 +5,8 @@
    "configTypes":[
       {
          "name":"feedId",
-         "type":"text",
-         "label":"Feed UUID",
+         "type":"feed",
+         "label":"Feed",
          "required":true,
          "path":"feed_configuration.uuid"
       },
@@ -77,6 +77,9 @@
       "feed_configuration":{
          "path":"api/connectors/feeds"
       },
+      "temperature": "f",
+      "measurements": "imperial",
+      "refresh_rate_seconds": 600,
       "date_format":"EEEE",
       "icon_set":"set1",
       "temperature_range_c":[

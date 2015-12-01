@@ -5,10 +5,11 @@
    "configTypes":[
       {
          "name":"feedId",
-         "type":"text",
-         "label":"Feed UUID",
+         "type":"feed",
+         "label":"Feed",
          "required":true,
-         "path":"feed_configuration.uuid"
+         "path":"feed_configuration.uuid",
+         "supportedTypes": [ "scala:feed:instagram", "scala:feed:facebook", "scala:feed:twitter" ]
       },
       {
          "name":"dateFormat",
@@ -18,11 +19,11 @@
          "path":"date_format",
          "options":[
             {
-               "label":"EU date format",
+               "label":"EU Date Format",
                "value":"dd-MM-yyyy HH:mm:ss"
             },
             {
-               "label":"US date format",
+               "label":"US Date Format",
                "value":"MM-dd-yyyy HH:mm:ss"
             }
          ]
@@ -44,7 +45,7 @@
       {
          "name":"effect",
          "type":"select",
-         "label":"tile animation",
+         "label":"Tile Animation",
          "required":false,
          "path":"effect",
          "options":[
@@ -73,7 +74,7 @@
       {
          "name":"sideBars",
          "type":"select",
-         "label":"page side bars",
+         "label":"Side Bars",
          "required":true,
          "path":"side_bars",
          "options":[
@@ -82,7 +83,7 @@
                "value":false
             },
             {
-               "label":"hide",
+               "label":"hidden",
                "value":true
             }
          ]
@@ -90,20 +91,20 @@
       {
          "name":"tileSize",
          "type":"select",
-         "label":"tile size",
+         "label":"Tile Size",
          "required":true,
          "path":"tile_size",
          "options":[
             {
-               "label":"small",
+               "label":"Small",
                "value":"small"
             },
             {
-               "label":"normal",
+               "label":"Medium",
                "value":"normal"
             },
             {
-               "label":"big",
+               "label":"Large",
                "value":"big"
             }
          ]
@@ -136,6 +137,11 @@
    "config":{
       "feed_configuration":{
          "path":"api/connectors/feeds"
-      }
+      },
+      "effect": "fade",
+      "date_format": "MM-dd-yyyy HH:mm:ss",
+      "tile_size": "normal",
+      "side_bars": true,
+      "refresh_rate_seconds": 600
    }
 }

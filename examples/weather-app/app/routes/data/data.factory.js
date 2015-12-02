@@ -7,8 +7,7 @@ app.factory('dataFactory', ['$http', 'config',
     var factory = {};
     factory.getScalaWeatherFeed = function () {
 
-
-      var feedUrl = '/' + config.feed_configuration.path + '/' + config.feed_configuration.uuid + '/data';
+      var feedUrl = '/api/connectors/feeds/' + config.feed_configuration.uuid + '/data';
       var options = {
         crossDomain: true
       };

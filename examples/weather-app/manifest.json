@@ -75,9 +75,6 @@
       }
    ],
    "config":{
-      "feed_configuration":{
-         "path":"api/connectors/feeds"
-      },
       "temperature": "f",
       "measurements": "imperial",
       "refresh_rate_seconds": 600,

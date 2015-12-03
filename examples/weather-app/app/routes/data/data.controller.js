@@ -19,9 +19,9 @@ app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config'
         forecast.date_format = config.date_format;
         forecast.icon = 'app/assets/icons/' + config.icon_set + '/' + item.raw.icon + '.svg';
         if (config.temperature !== 'f') {
-          forecast.minmax = '&nbsp;' + item.raw.low.celsius + '&#176;C' + '/' + item.raw.high.celsius + '&#176;C';
+          forecast.minmax = '&nbsp;' + item.metadata.low.c + '&#176;C' + '/' + item.metadata.high.c + '&#176;C';
         } else {
-          forecast.minmax = '&nbsp;' + item.raw.low.fahrenheit + '&#176;F' + '/' + item.raw.high.fahrenheit + '&#176;F';
+          forecast.minmax = '&nbsp;' + item.metadata.low.f + '&#176;F' + '/' + item.metadata.high.f + '&#176;F';
         }
 
         dataFeed.forecast.push(forecast);
@@ -29,11 +29,11 @@ app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config'
         dataFeed.current_icon = 'app/assets/icons/' + config.icon_set + '/' + item.raw.icon + '.svg';
 
         if (config.temperature !== 'f') {
-          dataFeed.current_temp = item.raw.temp_c + '&#176;C';
-          setTheme(item.raw.temp_c, 'temperature_range_c');
+          dataFeed.current_temp = item.metadata.current.c + '&#176;C';
+          setTheme(item.metadata.current.c, 'temperature_range_c');
         } else {
-          dataFeed.current_temp = item.raw.temp_f + '&#176;F';
-          setTheme(item.raw.temp_f, 'temperature_range_f');
+          dataFeed.current_temp = item.metadata.current.f + '&#176;F';
+          setTheme(item.metadata.current.f, 'temperature_range_f');
         }
 
         dataFeed.current_hum = item.raw.relative_humidity;

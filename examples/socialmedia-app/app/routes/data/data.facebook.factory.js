@@ -22,9 +22,9 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
           };
-        } else if (facebookData.profile.imageUrl) {
+        } else if (facebookData.details.imageUrl) {
           returnFeed.logo = {
-            'background-image': 'url(' + facebookData.profile.imageUrl + ')',
+            'background-image': 'url(' + facebookData.details.imageUrl + ')',
             'background-size': 'cover',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
@@ -55,9 +55,9 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
             'background-repeat': 'no-repeat'
           };
           returnFeed.page.hasCover = true;
-        } else if (facebookData.profile.coverUrl && orientation === 'portrait') {
+        } else if (facebookData.details.coverUrl && orientation === 'portrait') {
           returnFeed.cover = {
-            'background-image': 'url(' + facebookData.profile.coverUrl + ')',
+            'background-image': 'url(' + facebookData.details.coverUrl + ')',
             'background-size': 'cover',
             'background-position': 'center',
             'background-repeat': 'no-repeat'
@@ -82,13 +82,13 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
         };
         returnFeed.value1Icon = {'background-image': 'url(app/assets/facebook/facebook_like.svg)'};
         returnFeed.value1Text = 'Likes';
-        returnFeed.value1 = facebookData.profile.followers;
+        returnFeed.value1 = facebookData.details.followers;
         returnFeed.value2Icon = {'background-image': 'url(app/assets/facebook/facebook_checkins.svg)'};
         returnFeed.value2Text = 'Check-ins';
-        returnFeed.value2 = facebookData.profile.checkins;
+        returnFeed.value2 = facebookData.details.checkins;
         returnFeed.search = facebookData.search;
-        returnFeed.name = facebookData.profile.about;
-        returnFeed.description = formatText(facebookData.profile.description, aboutTextSize);
+        returnFeed.name = facebookData.details.about;
+        returnFeed.description = formatText(facebookData.details.description, aboutTextSize);
 
         // check for post items
         if (facebookData.items) {

@@ -21,9 +21,9 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
                     'background-repeat': 'no-repeat',
                     'background-position': 'center'
                 };
-            } else if (instagramData.profile.imageUrl) {
+            } else if (instagramData.details.imageUrl) {
                 returnFeed.logo = {
-                    'background-image': 'url(' + instagramData.profile.imageUrl + ')',
+                    'background-image': 'url(' + instagramData.details.imageUrl + ')',
                     'background-size': 'cover',
                     'background-repeat': 'no-repeat',
                     'background-position': 'center'
@@ -68,13 +68,13 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
             returnFeed.logoOverlay = 'app/assets/instagram/instagram_logo.svg';
             returnFeed.value1Icon = {'background-image': 'url(app/assets/instagram/instagram_media.svg)'};
             returnFeed.value1Text = 'Media';
-            returnFeed.value1 = instagramData.profile.posts;
+            returnFeed.value1 = instagramData.details.posts;
             returnFeed.value2Icon = {'background-image': 'url(app/assets/instagram/instagram_followers.svg)'};
             returnFeed.value2Text = 'Followers';
-            returnFeed.value2 = instagramData.profile.followers;
+            returnFeed.value2 = instagramData.details.followers;
             returnFeed.search = instagramData.search;
-            returnFeed.name = instagramData.profile.name;
-            returnFeed.description = formatText(instagramData.profile.description, aboutTextSize);
+            returnFeed.name = instagramData.details.name;
+            returnFeed.description = formatText(instagramData.details.description, aboutTextSize);
 
             // check for post items
             if (instagramData.items) {
@@ -99,7 +99,7 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
                         item.value2Icon = {'background-image': 'url(app/assets/instagram/instagram_comments.svg)'};
                         item.value2 = post_item.comments + ' comments';
                         item.value3Icon = {'background-image': 'url(app/assets/instagram/instagram_followers.svg)'};
-                        item.value3 = instagramData.profile.name;
+                        item.value3 = instagramData.details.name;
                         item.rowspan = 1;
                         item.textBackground = {'background-color': 'WhiteSmoke'};
                         item.providerLogo = {

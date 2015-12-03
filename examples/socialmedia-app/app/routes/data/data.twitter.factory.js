@@ -22,9 +22,9 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
           };
-        } else if (twitterData.profile.imageUrl) {
+        } else if (twitterData.details.imageUrl) {
           returnFeed.logo = {
-            'background-image': 'url(' + twitterData.profile.imageUrl + ')',
+            'background-image': 'url(' + twitterData.details.imageUrl + ')',
             'background-size': 'cover',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
@@ -55,9 +55,9 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
             'background-repeat': 'no-repeat'
           };
           returnFeed.page.hasCover = true;
-        } else if (twitterData.profile.coverUrl && orientation === 'portrait') {
+        } else if (twitterData.details.coverUrl && orientation === 'portrait') {
           returnFeed.cover = {
-            'background-image': 'url(' + twitterData.profile.coverUrl + ')',
+            'background-image': 'url(' + twitterData.details.coverUrl + ')',
             'background-size': 'cover',
             'background-position': 'center',
             'background-repeat': 'no-repeat'
@@ -77,13 +77,13 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
         returnFeed.logoOverlay = 'app/assets/twitter/twitter_logo.svg';
         returnFeed.value1Icon = {'background-image': 'url(app/assets/twitter/twitter_tweets.svg)'};
         returnFeed.value1Text = 'Tweets';
-        returnFeed.value1 = twitterData.profile.posts;
+        returnFeed.value1 = twitterData.details.posts;
         returnFeed.value2Icon = {'background-image': 'url(app/assets/twitter/twitter_followers.svg)'};
         returnFeed.value2Text = 'Followers';
-        returnFeed.value2 = twitterData.profile.followers;
+        returnFeed.value2 = twitterData.details.followers;
         returnFeed.search = twitterData.search;
-        returnFeed.name = twitterData.profile.name;
-        returnFeed.description = formatText(twitterData.profile.description, aboutTextSize);
+        returnFeed.name = twitterData.details.name;
+        returnFeed.description = formatText(twitterData.details.description, aboutTextSize);
 
         // check for post items
         if (twitterData.items) {
@@ -108,7 +108,7 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
               item.value2Icon = {'background-image': 'url(app/assets/twitter/twitter_favorites.svg)'};
               item.value2 = post_item.likes + ' favorites';
               item.value3Icon = {'background-image': 'url(app/assets/twitter/twitter_followers.svg)'};
-              item.value3 = twitterData.profile.name;
+              item.value3 = twitterData.details.name;
               item.rowspan = 1;
               item.textBackground = {'background-color': 'WhiteSmoke'};
               item.providerLogo = {'background-image': 'url(app/assets/twitter/twitter_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};

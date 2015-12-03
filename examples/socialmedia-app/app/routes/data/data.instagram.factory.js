@@ -110,7 +110,7 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
                         };
 
                         // adding media item from post
-                        if (item.images.length > 0) {
+                        if (post_item.images && post_item.images.length > 0) {
                             item.imageFound = true;
                             lodash.forEach(post_item.images, function (mediaItem) {
                                 tempMedia = {};
@@ -127,7 +127,7 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
 
                         // Adding item to feed list
                         // TODO support videos
-                        if (item.type === 'image') returnFeed.items.push(item);
+                        returnFeed.items.push(item);
                     }
 
                 });

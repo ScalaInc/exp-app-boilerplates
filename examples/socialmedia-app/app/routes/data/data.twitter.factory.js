@@ -114,7 +114,7 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
               item.providerLogo = {'background-image': 'url(app/assets/twitter/twitter_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};
 
               // adding media items from post
-              if (post_item.images.length > 0) {
+              if (post_item.images && post_item.images.length > 0) {
                 item.imageFound = true;
                 lodash.forEach(post_item.images, function (mediaItem) {
                   tempMedia = {};

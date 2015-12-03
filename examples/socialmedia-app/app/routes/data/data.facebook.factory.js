@@ -124,7 +124,7 @@ app.factory('facebookFactory', ['$http', 'config', 'lodash',
               };
 
               // adding media items from post
-              if (post_item.images.length > 0) {
+              if (post_item.images && post_item.images.length > 0) {
                 item.imageFound = true;
                 lodash.forEach(post_item.images, function (mediaItem) {
                   tempMedia = {};

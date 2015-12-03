@@ -4,33 +4,33 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
     // define the factory to return
     var factory = {};
 
-    factory.getInstagramFeed = function (instagramData, orientation, descriptionTextSize, aboutTextSize, URLPromise) {
+    factory.getInstagramFeed = function (instagramData, orientation, descriptionTextSize, aboutTextSize, urlPromise) {
         var returnFeed = {};
         returnFeed.items = [];
         var tempMedia = {};
         var item = {};
 
         // ------ page info ------
-        return URLPromise.then(function (URLList) {
+        return urlPromise.then(function (urls) {
 
             // Get instagram logo or custom logo if no logo is found default to the instagram logo
-            if (URLList[0] !== '') {
+            if (urls[0]) {
                 returnFeed.logo = {
-                    'background-image': 'url(' + URLList[0] + ')',
+                    'background-image': 'url(' + urls[0] + ')',
                     'background-size': 'cover',
                     'background-repeat': 'no-repeat',
                     'background-position': 'center'
                 };
-            } else if (instagramData.profile.hasOwnProperty('profile_image')) {
+            } else if (instagramData.profile.imageUrl) {
                 returnFeed.logo = {
-                    'background-image': 'url(' + instagramData.profile.profile_image + ')',
+                    'background-image': 'url(' + instagramData.profile.imageUrl + ')',
                     'background-size': 'cover',
                     'background-repeat': 'no-repeat',
                     'background-position': 'center'
                 };
             } else {
                 returnFeed.logo = {
-                    'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_logo2.svg)',
+                    'background-image': 'url(app/assets/instagram/instagram_logo2.svg)',
                     'background-size': 'cover',
                     'background-repeat': 'no-repeat',
                     'background-position': 'center'
@@ -38,17 +38,17 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
             }
 
             // setting cover image, if no image is found from user and instagram default to the instagram banner
-            if ((URLList[1] !== '') && (orientation === 'landscape')) {
+            if (urls[1] && orientation === 'landscape') {
                 returnFeed.cover = {
-                    'background-image': 'url(' + URLList[1] + ')',
+                    'background-image': 'url(' + urls[1] + ')',
                     'background-size': 'cover',
                     'background-position': 'center',
                     'background-repeat': 'no-repeat'
                 };
                 returnFeed.hasCover = true;
-            } else if ((URLList[2] !== '') && (orientation === 'portrait')) {
+            } else if (urls[2] && orientation === 'portrait') {
                 returnFeed.cover = {
-                    'background-image': 'url(' + URLList[2] + ')',
+                    'background-image': 'url(' + urls[2] + ')',
                     'background-size': 'cover',
                     'background-position': 'center',
                     'background-repeat': 'no-repeat'
@@ -56,7 +56,7 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
                 returnFeed.page.hasCover = true;
             } else {
                 returnFeed.cover = {
-                    'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_cover.svg)',
+                    'background-image': 'url(app/assets/instagram/instagram_cover.svg)',
                     'background-size': 'cover',
                     'background-position': 'center',
                     'background-repeat': 'no-repeat'
@@ -65,22 +65,22 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
             }
 
             // general feed info
-            returnFeed.logoOverlay = 'app/assets/' + instagramData.search.source + '/instagram_logo.svg';
-            returnFeed.value1Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_media.svg)'};
+            returnFeed.logoOverlay = 'app/assets/instagram/instagram_logo.svg';
+            returnFeed.value1Icon = {'background-image': 'url(app/assets/instagram/instagram_media.svg)'};
             returnFeed.value1Text = 'Media';
-            returnFeed.value1 = instagramData.profile.media;
-            returnFeed.value2Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_followers.svg)'};
-            returnFeed.value2Text = 'Followed';
-            returnFeed.value2 = instagramData.profile.followed;
+            returnFeed.value1 = instagramData.profile.posts;
+            returnFeed.value2Icon = {'background-image': 'url(app/assets/instagram/instagram_followers.svg)'};
+            returnFeed.value2Text = 'Followers';
+            returnFeed.value2 = instagramData.profile.followers;
             returnFeed.search = instagramData.search;
             returnFeed.name = instagramData.profile.name;
-            returnFeed.description = formatText(instagramData.profile.bio, aboutTextSize);
+            returnFeed.description = formatText(instagramData.profile.description, aboutTextSize);
 
             // check for post items
-            if (instagramData.hasOwnProperty('post')) {
+            if (instagramData.items) {
 
                 // loop through items
-                lodash.forEach(instagramData.post, function (post_item) {
+                lodash.forEach(instagramData.items, function (post_item) {
 
                     // include items with text search value set in the config file
                     if (lodash.contains(post_item.text, lodash.get(config, 'include_item_text_search', '')) || ( lodash.get(config, 'include_item_text_search', '') === '')) {
@@ -90,41 +90,44 @@ app.factory('instagramFactory', ['$http', 'config', 'lodash', function ($http, c
                         item.mediaItems = [];
 
                         // adding general post information
-                        item.creationDate = post_item.creation_date;
+                        item.creationDate = post_item.date;
                         item.dateFormat = config.date_format;
                         item.text = formatText(post_item.text, descriptionTextSize);
                         item.fullText = post_item.text;
-                        item.value1Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_like.svg)'};
+                        item.value1Icon = {'background-image': 'url(app/assets/instagram/instagram_like.svg)'};
                         item.value1 = post_item.likes + ' likes';
-                        item.value2Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_comments.svg)'};
+                        item.value2Icon = {'background-image': 'url(app/assets/instagram/instagram_comments.svg)'};
                         item.value2 = post_item.comments + ' comments';
-                        item.value3Icon = {'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_followers.svg)'};
+                        item.value3Icon = {'background-image': 'url(app/assets/instagram/instagram_followers.svg)'};
                         item.value3 = instagramData.profile.name;
                         item.rowspan = 1;
                         item.textBackground = {'background-color': 'WhiteSmoke'};
                         item.providerLogo = {
-                            'background-image': 'url(app/assets/' + instagramData.search.source + '/instagram_logo2.svg)',
+                            'background-image': 'url(app/assets/instagram/instagram_logo2.svg)',
                             'background-size': 'cover',
                             'background-position': 'center',
                             'background-repeat': 'no-repeat'
                         };
-
 
                         // adding media item from post
-                        tempMedia = {};
-                        item.imageFound = true;
-                        tempMedia.style = {
-                            'background-image': 'url(' + post_item.image_url_standard + ')',
-                            'background-size': 'cover',
-                            'background-position': 'center',
-                            'background-repeat': 'no-repeat'
-                        };
-                        tempMedia.type = post_item.type;
-
-                        item.mediaItems.push(tempMedia);
+                        if (item.images.length > 0) {
+                            item.imageFound = true;
+                            lodash.forEach(post_item.images, function (mediaItem) {
+                                tempMedia = {};
+                                tempMedia.style = {
+                                    'background-image': 'url(' + post_item.images[0].url + ')',
+                                    'background-size': 'cover',
+                                    'background-position': 'center',
+                                    'background-repeat': 'no-repeat'
+                                };
+                                tempMedia.type = 'image';
+                                item.mediaItems.push(tempMedia);
+                            });
+                        }
 
                         // Adding item to feed list
-                        returnFeed.items.push(item);
+                        // TODO support videos
+                        if (item.type === 'image') returnFeed.items.push(item);
                     }
 
                 });

@@ -5,33 +5,33 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
     // define the factory to return
     var factory = {};
 
-    factory.getTwitterFeed = function (twitterData, orientation, descriptionTextSize, aboutTextSize, URLPromise) {
+    factory.getTwitterFeed = function (twitterData, orientation, descriptionTextSize, aboutTextSize, urlPromise) {
       var returnFeed = {};
       returnFeed.items = [];
       var tempMedia = {};
       var item = {};
 
       // ------ page info ------
-      return URLPromise.then(function(URLList){
+      return urlPromise.then(function(urls){
 
         // Get twitter logo or custom logo if no logo is found default to the twitter logo
-        if (URLList[0] !== '') {
+        if (urls[0]) {
           returnFeed.logo = {
-            'background-image': 'url(' + URLList[0] + ')',
+            'background-image': 'url(' + urls[0] + ')',
             'background-size': 'cover',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
           };
-        } else if (twitterData.profile.hasOwnProperty('profile_image')) {
+        } else if (twitterData.profile.imageUrl) {
           returnFeed.logo = {
-            'background-image': 'url(' + twitterData.profile.profile_image + ')',
+            'background-image': 'url(' + twitterData.profile.imageUrl + ')',
             'background-size': 'cover',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
           };
         } else {
           returnFeed.logo = {
-            'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_logo2.svg)',
+            'background-image': 'url(app/assets/twitter/twitter_logo2.svg)',
             'background-size': 'cover',
             'background-repeat': 'no-repeat',
             'background-position': 'center'
@@ -39,25 +39,25 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
         }
 
         // setting cover image, if no image is found from user and twitter default to the twitter banner
-        if ((URLList[1] !== '') && (orientation === 'landscape')) {
+        if (urls[1] && orientation === 'landscape') {
           returnFeed.cover = {
-            'background-image': 'url(' + URLList[1] + ')',
+            'background-image': 'url(' + urls[1] + ')',
             'background-size': 'cover',
             'background-position': 'center',
             'background-repeat': 'no-repeat'
           };
           returnFeed.hasCover = true;
-        } else if ((URLList[2] !== '') && (orientation === 'portrait')) {
+        } else if (urls[2] && orientation === 'portrait') {
           returnFeed.cover = {
-            'background-image': 'url(' + URLList[2] + ')',
+            'background-image': 'url(' + urls[2] + ')',
             'background-size': 'cover',
             'background-position': 'center',
             'background-repeat': 'no-repeat'
           };
           returnFeed.page.hasCover = true;
-        } else if ((twitterData.profile.hasOwnProperty('background_image')) && (orientation === 'portrait')) {
+        } else if (twitterData.profile.coverUrl && orientation === 'portrait') {
           returnFeed.cover = {
-            'background-image': 'url(' + twitterData.profile.background_image + ')',
+            'background-image': 'url(' + twitterData.profile.coverUrl + ')',
             'background-size': 'cover',
             'background-position': 'center',
             'background-repeat': 'no-repeat'
@@ -65,7 +65,7 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
           returnFeed.hasCover = true;
         } else {
           returnFeed.cover = {
-            'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_cover.svg)',
+            'background-image': 'url(app/assets/twitter/twitter_cover.svg)',
             'background-size': 'cover',
             'background-position': 'center',
             'background-repeat': 'no-repeat'
@@ -74,11 +74,11 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
         }
 
         // general feed info
-        returnFeed.logoOverlay = 'app/assets/' + twitterData.search.source + '/twitter_logo.svg';
-        returnFeed.value1Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_tweets.svg)'};
+        returnFeed.logoOverlay = 'app/assets/twitter/twitter_logo.svg';
+        returnFeed.value1Icon = {'background-image': 'url(app/assets/twitter/twitter_tweets.svg)'};
         returnFeed.value1Text = 'Tweets';
-        returnFeed.value1 = twitterData.profile.tweets;
-        returnFeed.value2Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_followers.svg)'};
+        returnFeed.value1 = twitterData.profile.posts;
+        returnFeed.value2Icon = {'background-image': 'url(app/assets/twitter/twitter_followers.svg)'};
         returnFeed.value2Text = 'Followers';
         returnFeed.value2 = twitterData.profile.followers;
         returnFeed.search = twitterData.search;
@@ -86,10 +86,10 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
         returnFeed.description = formatText(twitterData.profile.description, aboutTextSize);
 
         // check for post items
-        if (twitterData.hasOwnProperty('tweets')) {
+        if (twitterData.items) {
 
           // loop through items
-          lodash.forEach(twitterData.tweets, function (post_item) {
+          lodash.forEach(twitterData.items, function (post_item) {
 
             // include items with text search value set in the config file
             if (lodash.contains(post_item.text, lodash.get(config, 'include_item_text_search', '')) || ( lodash.get(config, 'include_item_text_search', '') === '')) {
@@ -103,35 +103,35 @@ app.factory('twitterFactory', ['$http', 'config', 'lodash',
               item.fullText = post_item.text
               item.creationDate = post_item.date;
               item.dateFormat = config.date_format;
-              item.value1Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_tweets.svg)'};
-              item.value1 = post_item.retweets + ' retweets';
-              item.value2Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_favorites.svg)'};
-              item.value2 = post_item.favorites + ' favorites';
-              item.value3Icon = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_followers.svg)'};
+              item.value1Icon = {'background-image': 'url(app/assets/twitter/twitter_tweets.svg)'};
+              item.value1 = post_item.shares + ' retweets';
+              item.value2Icon = {'background-image': 'url(app/assets/twitter/twitter_favorites.svg)'};
+              item.value2 = post_item.likes + ' favorites';
+              item.value3Icon = {'background-image': 'url(app/assets/twitter/twitter_followers.svg)'};
               item.value3 = twitterData.profile.name;
               item.rowspan = 1;
               item.textBackground = {'background-color': 'WhiteSmoke'};
-              item.providerLogo = {'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};
+              item.providerLogo = {'background-image': 'url(app/assets/twitter/twitter_logo2.svg)','background-size': 'cover','background-position': 'center','background-repeat': 'no-repeat'};
 
               // adding media items from post
-              if (post_item.media.length > 0) {
+              if (post_item.images.length > 0) {
                 item.imageFound = true;
-                lodash.forEach(post_item.media, function (mediaItem) {
+                lodash.forEach(post_item.images, function (mediaItem) {
                   tempMedia = {};
                   tempMedia.style = {
-                    'background-image': 'url(' + mediaItem.media_url_https + ')',
+                    'background-image': 'url(' + mediaItem.url + ')',
                     'background-size': 'cover',
                     'background-position': 'center',
                     'background-repeat': 'no-repeat'
                   };
-                  tempMedia.type = mediaItem.type;
+                  tempMedia.type = 'image';
                   item.mediaItems.push(tempMedia);
                 });
               } else { // adding page logo if no media exits
                 item.imageFound = false;
                 tempMedia = {};
                 tempMedia.style = {
-                  'background-image': 'url(app/assets/' + twitterData.search.source + '/twitter_logo2.svg)',
+                  'background-image': 'url(app/assets/twitter/twitter_logo2.svg)',
                   'background-size': 'cover',
                   'background-position': 'center',
                   'background-repeat': 'no-repeat'

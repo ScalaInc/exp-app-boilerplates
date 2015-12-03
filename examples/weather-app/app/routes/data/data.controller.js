@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config', 'lodash', '$sce', function ($scope, $interval, dataFactory, config, lodash) {
+app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config', 'lodash', function ($scope, $interval, dataFactory, config, lodash) {
   $scope.dataFeed = {};
   $scope.themeSelect = 'default';
 
@@ -11,7 +11,7 @@ app.controller('dataController', ['$scope', '$interval', 'dataFactory', 'config'
 
     dataFeed.forecast = [];
 
-    lodash.forEach(tempFeed.item, function (item) {
+    lodash.forEach(tempFeed.items, function (item) {
 
       if (item.type === 'forecast') {
         var forecast = {};

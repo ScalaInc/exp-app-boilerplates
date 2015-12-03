@@ -50,23 +50,23 @@
          "path":"effect",
          "options":[
             {
-               "label":"bounce",
+               "label":"Bounce",
                "value":"bounce"
             },
             {
-               "label":"fade",
+               "label":"Fade",
                "value":"fade"
             },
             {
-               "label":"rotate",
+               "label":"Rotate",
                "value":"rotate"
             },
             {
-               "label":"zoom",
+               "label":"Zoom",
                "value":"zoom"
             },
             {
-               "label":"flip",
+               "label":"Flip",
                "value":"flip"
             }
          ]
@@ -79,11 +79,11 @@
          "path":"side_bars",
          "options":[
             {
-               "label":"visible",
+               "label":"Visible",
                "value":false
             },
             {
-               "label":"hidden",
+               "label":"Hidden",
                "value":true
             }
          ]

@@ -890,6 +890,8 @@
 .maxSize{
   height: 100%;
   width: 100%;
+  overflow-y:hidden !important;
+  overflow-x:hidden !important;
 }
 
 .gridListSize{
@@ -920,3 +922,25 @@
   background-position: center;
   background-size: cover;
 }
+
+
+/* ---------- small tile ---------- */
+
+.smallTileFullTextContainer{
+  height:93%;
+  text-align:left;
+  padding:5%;
+}
+
+.smallTileProviderLogo{
+  width:10%;
+  height:100%;
+}
+
+.smallTileTextContainer{
+  width:80%;
+  height:100%;
+  padding: 0% 0% 0% 2%;
+}
+
+

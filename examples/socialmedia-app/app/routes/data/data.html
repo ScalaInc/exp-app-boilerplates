@@ -226,13 +226,13 @@
                 <div class="smallTileDateContainer" layout="column" layout-align="center center">
                   <label class="md-caption smallTileText">{{item.creationDate | date : item.dateFormat}}</label>
                 </div>
-				<div style="height:93%;text-align:left;padding:5%">
+				<div class="smallTileFullTextContainer">
 					<p class="md-subhead smallTileText2">{{item.fullText}}</p>
 				</div>
               </div>
               <div class="smallTileTextContainer" layout="row">
-                <div style="width:10%;height:100%" ng-style="item.providerLogo"></div>
-				<div style="width:80%;height:100%;padding: 0% 0% 0% 2%">
+                <div class="smallTileProviderLogo" ng-style="item.providerLogo"></div>
+				<div class="smallTileTextContainer">
 					<p class="md-subhead smallTileText" ng-if="item.imageFound">{{item.text}}</p>
 				</div>
               </div>

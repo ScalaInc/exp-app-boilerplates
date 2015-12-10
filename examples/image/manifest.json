@@ -2,6 +2,7 @@
    "name":"Image Experience",
    "icon":"image-area",
    "background":"orange",
+   "description": "Displays a single static image.",
    "configTypes":[
       {
          "name":"imageFile",

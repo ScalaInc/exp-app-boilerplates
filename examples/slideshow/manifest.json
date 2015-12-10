@@ -2,6 +2,7 @@
   "name": "Slideshow",
   "icon": "image-area",
   "background": "green",
+  "description": "Plays a series of URLs, apps, videos, or images in rotation with optional transtions.",
   "configTypes": [
     {
       "name": "duration",

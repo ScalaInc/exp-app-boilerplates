@@ -2,6 +2,7 @@
    "name":"Youtube Experience",
    "icon":"youtube-play",
    "background":"red",
+   "description": "Displays a Youtube video from a user-defined URL or Youtube ID.",
    "configTypes":[
       {
          "name":"videoId",

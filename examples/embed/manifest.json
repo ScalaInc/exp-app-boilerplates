@@ -2,6 +2,7 @@
    "name":"Web Experience",
    "icon":"web",
    "background":"green",
+   "description": "Displays a web experience from a URL the user selects.",
    "configTypes":[
       {
          "name":"urlToEmbed",

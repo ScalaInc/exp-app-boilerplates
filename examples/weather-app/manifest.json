@@ -2,6 +2,7 @@
    "name":"Weather Experience",
    "icon":"weather-partlycloudy",
    "background":"yellow",
+   "description":"Displays the current conditions and forecast for a given location."
    "configTypes":[
       {
          "name":"feedId",

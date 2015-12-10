@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: facebook;
+    src: url(../../../Montserrat-Light.otf);
+}
+
+#facebook {
+    font-family: facebook;
+    background: #000;
+    height: 100% !important; /* ug */
+    overflow-y: hidden;
+    position: none;
+    width: 100%;
+    
+
+}
+
+
+#facebook .grid-item {
+    float: left;
+    overflow: hidden;
+    width: 25%;
+    padding: 2px;
+    position: relative;
+}
+
+#facebook .grid-item img {
+    display: block;
+    width: 100%;
+}
+#facebook .grid-item.vin:after{
+    box-shadow: inset 0 -90px 45px -50px #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    content: "";
+}
+
+#facebook .grid-sizer{
+    width: 25%;
+}
+#facebook .grid-item .text {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 0px 6px 6px 6px;
+    z-index: 3;
+    color: rgba(255, 255, 255, .7);
+    font-size: 10px;
+    line-height: 12px;
+}

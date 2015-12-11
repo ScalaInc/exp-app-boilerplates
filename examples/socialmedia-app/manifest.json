@@ -2,6 +2,7 @@
    "name":"Social Media Experience",
    "icon":"share-variant",
    "background":"blue",
+   "description":"Displays a social media feed from one of a variety of social networks.",
    "configTypes":[
       {
          "name":"feedId",

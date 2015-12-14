@@ -64,7 +64,7 @@ window.app.controller('facebookController', function ($scope, config) {
   }
 
 
-//  setInterval(refresh, 30 * 1000);
+  setInterval(refresh, 10 * 60 * 1000);
   refresh();
 
 });

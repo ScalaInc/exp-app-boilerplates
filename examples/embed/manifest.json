@@ -1,5 +1,5 @@
 {
-   "name":"Web Experience",
+   "name":"Web App",
    "icon":"web",
    "background":"green",
    "description": "Displays a web experience from a URL the user selects.",

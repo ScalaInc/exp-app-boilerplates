@@ -1,11 +1,11 @@
-{  
-   "name":"Status Experience",
+{
+   "name":"Status App",
    "icon":"apps",
    "background":"pink",
-   "configTypes":[  
+   "configTypes":[
 
    ],
-   "config":{  
+   "config":{
 
    }
 }

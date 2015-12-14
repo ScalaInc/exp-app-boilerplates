@@ -14,21 +14,21 @@
       },
       {
          "name":"numberRows",
-         "type":"string",
+         "type":"text",
          "label":"Number of Rows",
          "required":false,
          "path":"numberRows"
       },
       {
          "name":"fontSize",
-         "type":"string",
+         "type":"text",
          "label":"Font Size",
          "required":false,
          "path":"fontSize"
       },
       {
          "name":"gutterSize",
-         "type":"string",
+         "type":"text",
          "label":"Gutter Size",
          "required":false,
          "path":"gutterSize"

@@ -5,10 +5,10 @@ window.app.controller('facebookController', function ($scope, config) {
   var path = config.feed_configuration.path;
   var uuid = config.feed_configuration.uuid;
   var url = ['/', path, uuid, 'data'].join('/');
-  var rows = config.numberRows || Math.round(4 * window.innerWidth / 1920);
-  var font = config.fontSize || 14;
+  var rows = parseFloat(config.numberRows) || Math.round(4 * window.innerWidth / 1920);
+  var font = parseFloat(config.fontSize) || 14;
   var width = (1 / rows) * 100;
-  var gutter = config.gutterSize || 4;
+  var gutter = parseFloat(config.gutterSize) || 4;
   var $facebook = $('#facebook');
 
   function refresh () {
@@ -43,7 +43,7 @@ window.app.controller('facebookController', function ($scope, config) {
         var $text = $('<p>').addClass('text').text(text);
         $text.css('font-size', font + 'px');
         $text.appendTo($item);
-        $item.appendTo($wrapper);        
+        $item.appendTo($wrapper);
         $wrapper.appendTo($grid);
       });
       $grid.appendTo($facebook);
@@ -64,7 +64,7 @@ window.app.controller('facebookController', function ($scope, config) {
   }
 
 
-  setInterval(refresh, 10 * 60 * 1000);
+  setInterval(refresh, config.refresh_rate_seconds * 1000);
   refresh();
 
 });

@@ -13,6 +13,28 @@
          "supportedTypes": [ "scala:feed:instagram", "scala:feed:facebook", "scala:feed:twitter" ]
       },
       {
+         "name":"numberRows",
+         "type":"string",
+         "label":"Number of Rows",
+         "required":false,
+         "path":"numberRows"
+      },
+      {
+         "name":"fontSize",
+         "type":"string",
+         "label":"Font Size",
+         "required":false,
+         "path":"fontSize"
+      },
+      {
+         "name":"gutterSize",
+         "type":"string",
+         "label":"Gutter Size",
+         "required":false,
+         "path":"gutterSize"
+      },
+
+      {
          "name":"dateFormat",
          "type":"select",
          "label":"Date Format",

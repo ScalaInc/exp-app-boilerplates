@@ -2,6 +2,7 @@
 
 app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactory', 'facebookFactory', 'twitterFactory', 'instagramFactory', '$location', 'config', 'lodash', '$q', function ($scope, $mdMedia, $interval, feedFactory, facebookFactory, twitterFactory, instagramFactory, $location, config, lodash, $q) {
 
+  
     // scope variables
     $scope.dataFeed = {};
     $scope.currentDate = new Date();
@@ -215,14 +216,15 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
                 if (typeof result !== 'undefined') {
 
                     // select the format of the data feed
-                    if (result.search.source === FACEBOOK) {
-                        return facebookFactory.getFacebookFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
-                    } else if (result.search.source === TWITTER) {
-                        return twitterFactory.getTwitterFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
-                    } else if (result.search.source === INSTAGRAM) {
-                        return instagramFactory.getInstagramFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
-                    }
-
+                  if (result.search.source === FACEBOOK) {
+                    window.location.hash = '/facebook';
+                    return;
+                  } else if (result.search.source === TWITTER) {
+                    return twitterFactory.getTwitterFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
+                  } else if (result.search.source === INSTAGRAM) {
+                    return instagramFactory.getInstagramFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
+                  }
+                  
                 } else {
                     throw new Error('no data received');
                 }

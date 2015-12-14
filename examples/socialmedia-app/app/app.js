@@ -16,6 +16,10 @@ app.config(function ($routeProvider) {
       controller: 'errorController',
       templateUrl: 'app/routes/error/error.html'
     })
+    .when('/facebook', {
+      controller: 'facebookController',
+      templateUrl: 'app/routes/facebook/facebook.html'
+    })
     .otherwise(
     {
       redirectTo: '/socialmedia/data'
@@ -26,9 +30,11 @@ app.config(function ($routeProvider) {
 (
   function () {
     window.addEventListener('scala', function () {
-      // Get EXP-CORE config
+      window.exp = scala;
       app.value('config', scala.app.config);
       // bootstrapping application
+      var elem = document.querySelector('.grid');
+      
       angular.bootstrap(document.body, [app.name], {});
     });
   }()

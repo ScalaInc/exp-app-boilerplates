@@ -218,13 +218,13 @@ app.controller('dataController', ['$scope', '$mdMedia', '$interval', 'feedFactor
                     // select the format of the data feed
                   if (result.search.source === FACEBOOK) {
                     window.location.hash = '/facebook';
-                        return facebookFactory.getFacebookFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
-                    } else if (result.search.source === TWITTER) {
-                        return twitterFactory.getTwitterFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
-                    } else if (result.search.source === INSTAGRAM) {
-                        return instagramFactory.getInstagramFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
-                    }
-
+                    return;
+                  } else if (result.search.source === TWITTER) {
+                    return twitterFactory.getTwitterFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
+                  } else if (result.search.source === INSTAGRAM) {
+                    return instagramFactory.getInstagramFeed(result, orientation, descriptionTextSize, aboutTextSize, getUrlList());
+                  }
+                  
                 } else {
                     throw new Error('no data received');
                 }

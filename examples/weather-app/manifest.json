@@ -1,5 +1,5 @@
 {
-   "name":"Weather Experience",
+   "name":"Weather App",
    "icon":"weather-partlycloudy",
    "background":"yellow",
    "description":"Displays the current conditions and forecast for a given location.",

@@ -1,46 +1,70 @@
 'use strict';
 
 window.app.controller('facebookController', function ($scope, config) {
-  $scope.data = { items: [] }; 
-  var $grid = $('.grid').masonry({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer'
-  });
+
   var path = config.feed_configuration.path;
   var uuid = config.feed_configuration.uuid;
   var url = ['/', path, uuid, 'data'].join('/');
-  exp.api.get(url).then(function (data) {
-    $('<div>')
-      .addClass('grid-item')
-      .append(
-        $('<img>')
-          .attr('src', data.details.imageUrl)
-      ).appendTo($grid);
-    data.items.forEach(function (item) {
-      if (item.text.length > 140) {
-        item.text = item.text.slice(0, 140) + '...';
-      }
-      $('<div>')
-        .addClass('grid-item')
-        .addClass('vin')
-        .append(
-          $('<img>')
-            .attr('src', item.images[0].url)
-        )
-        .append(
-          $('<div>')
-            .addClass('text')
-            .text(moment(item.date).fromNow() + ': ' + item.text)
-        )
-        .appendTo($grid);
+  var rows = config.numberRows || Math.round(4 * window.innerWidth / 1920);
+  var font = config.fontSize || 14;
+  var width = (1 / rows) * 100;
+  var gutter = config.gutterSize || 4;
+  var $facebook = $('#facebook');
+
+  function refresh () {
+    $('#facebook .grid').remove();
+    var $grid = $('<div>').addClass('grid');
+    var $sizer = $('<div>').addClass('sizer');
+    $sizer.css('width', width + '%');
+    $sizer.appendTo($grid);
+    
+    window.exp.api.get(url).then(function (data) {
+      var $wrapper = $('<div>').addClass('wrapper');
+      $wrapper.css('width', width + '%');
+      var $item = $('<div>').addClass('item');
+      $item.css('max-width', '100%');
+      $item.css('padding', gutter + 'px');
+      var $image = $('<img>').attr('src', data.details.imageUrl);
+      $image.appendTo($item);
+      $item.appendTo($wrapper);
+      $wrapper.appendTo($grid);
+      data.items.forEach(function (item) {
+        var text = item.text;
+        if (text.length > 140) text = text.slice(0, 140) + '...';
+        text = moment(item.date).fromNow() + ': ' + text;
+        var $wrapper = $('<div>').addClass('wrapper');
+        $wrapper.css('width', width + '%');
+        var $item = $('<div>').addClass('item');
+        $item.css('max-width', '100%');
+        $item.css('padding', gutter + 'px');
+        $item.addClass('vignette');
+        var $image = $('<img>').attr('src', item.images[0].url);
+        $image.appendTo($item);
+        var $text = $('<p>').addClass('text').text(text);
+        $text.css('font-size', font + 'px');
+        $text.appendTo($item);
+        $item.appendTo($wrapper);        
+        $wrapper.appendTo($grid);
+      });
+      $grid.appendTo($facebook);
+
+      $grid.masonry({
+        itemSelector: '.wrapper',
+        columnWidth: '.sizer'
+      });
+      $grid.masonry('reloadItems');
+      $grid.imagesLoaded().progress(function () {
+        $grid.masonry('layout');
+      });
     });
-    $grid.masonry('reloadItems');
-    $grid.imagesLoaded().progress(function () {
-      $grid.masonry('layout');
-    });
-
-  });
 
 
+    
+
+  }
+
+
+//  setInterval(refresh, 30 * 1000);
+  refresh();
 
 });

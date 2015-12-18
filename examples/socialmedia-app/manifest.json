@@ -19,30 +19,6 @@
          "required":false,
          "path":"numberRows"
       },
-       {
-         "name":"showText",
-         "type":"select",
-         "label":"Show Text",
-         "required":true,
-         "path":"showText",
-         "options":[
-           {
-             "label":"show",
-             "value": true
-           },
-           {
-             "label":"hide",
-             "value": false
-           }
-         ]
-       },
-      {
-         "name":"fontSize",
-         "type":"text",
-         "label":"Font Size",
-         "required":false,
-         "path":"fontSize"
-      },
       {
          "name":"gutterSize",
          "type":"text",

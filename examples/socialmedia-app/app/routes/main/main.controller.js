@@ -31,11 +31,9 @@ window.app.controller('mainController', function ($scope, config) {
       data.items.forEach(function (item) {
 
         var text = '';
-	      if(config.showText === 'true'){
-          text = item.text;
-          if (text.length > 140) text = text.slice(0, 140) + '...';
-          text = moment(item.date).fromNow() + ': ' + text;
-        }
+        //text = item.text;
+        //if (text.length > 140) text = text.slice(0, 140) + '...';
+        //text = moment(item.date).fromNow() + ': ' + text;
         var $wrapper = $('<div>').addClass('wrapper');
         $wrapper.css('width', width + '%');
         var $item = $('<div>').addClass('item');

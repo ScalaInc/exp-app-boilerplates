@@ -29,23 +29,43 @@ window.app.controller('mainController', function ($scope, config) {
       $item.appendTo($wrapper);
       $wrapper.appendTo($grid);
       data.items.forEach(function (item) {
-        var text = item.text;
-        if (text.length > 140) text = text.slice(0, 140) + '...';
-        text = moment(item.date).fromNow() + ': ' + text;
+
+        var text = '';
+        if(config.showText){
+          text = item.text;
+          if (text.length > 140) text = text.slice(0, 140) + '...';
+          text = moment(item.date).fromNow() + ': ' + text;
+        }
         var $wrapper = $('<div>').addClass('wrapper');
         $wrapper.css('width', width + '%');
         var $item = $('<div>').addClass('item');
         $item.css('max-width', '100%');
         $item.css('padding', gutter + 'px');
         $item.addClass('vignette');
-        var $image = $('<img>').attr('src', item.images[0].url);
-        $image.appendTo($item);
-        var $text = $('<p>').addClass('text').text(text);
+
+	  		// check for image or video
+	  		if(item.type === 'video'){
+	  			if(item.hasOwnProperty('videos')){
+	  				console.log('adding video');
+	  				var $video = $('<video>').attr('src', item.videos[0].url).attr('autoplay','true').attr('muted','true').attr('loop','true');
+	  				$video.appendTo($item);
+	  			}
+	  		}else{
+	  			if(item.hasOwnProperty('images')){
+	  				console.log('adding image');
+	  				var $image = $('<img>').attr('src', item.images[0].url);
+	  		        $image.appendTo($item);
+	  			}
+	  		}
+
+	  		var $text = $('<p>').addClass('text').text(text);
         $text.css('font-size', font + 'px');
         $text.appendTo($item);
         $item.appendTo($wrapper);
         $wrapper.appendTo($grid);
-      });
+
+
+	  });
       $grid.appendTo($facebook);
 
       $grid.masonry({

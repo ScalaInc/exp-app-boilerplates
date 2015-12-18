@@ -19,6 +19,23 @@
          "required":false,
          "path":"numberRows"
       },
+       {
+         "name":"showText",
+         "type":"select",
+         "label":"Show Text",
+         "required":true,
+         "path":"showText",
+         "options":[
+           {
+             "label":"show",
+             "value": true
+           },
+           {
+             "label":"hide",
+             "value": false
+           }
+         ]
+       },
       {
          "name":"fontSize",
          "type":"text",
@@ -45,10 +62,11 @@
       "feed_configuration":{
          "path":"api/connectors/feeds"
       },
-      "effect": "fade",
-      "date_format": "MM-dd-yyyy HH:mm:ss",
-      "tile_size": "normal",
-      "side_bars": true,
-      "refresh_rate_seconds": 600
+      "refresh_rate_seconds": 600,
+      "gutterSize": null,
+      "fontSize": null,
+      "numberRows": null,
+      "feed_configuration.uuid": null,
+      "showText": false
    }
 }

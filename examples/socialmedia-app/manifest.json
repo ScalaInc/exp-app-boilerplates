@@ -62,11 +62,6 @@
       "feed_configuration":{
          "path":"api/connectors/feeds"
       },
-      "refresh_rate_seconds": 600,
-      "gutterSize": null,
-      "fontSize": null,
-      "numberRows": null,
-      "feed_configuration.uuid": null,
-      "showText": false
+      "refresh_rate_seconds": 600
    }
 }

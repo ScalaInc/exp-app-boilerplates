@@ -4,11 +4,13 @@
 
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-    <link type="text/css" rel="stylesheet" href="app/routes/main/main.css">
+    <link type="text/css" rel="stylesheet" href="app/css/style.css">
+    <link type="text/css" rel="stylesheet" href="app/css/animate.css">
     <link type='text/css' rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css'  media='all' />
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="app/assets/icon.png">
-    <title>Scala Social Media App</title>
+    <link type="text/css" rel="stylesheet" href="app/routes/facebook/facebook.css">
+    <title>Scala Facebook App</title>
 
   </head>
   <body>
@@ -37,6 +39,15 @@
 
   <!-- app include scripts -->
   <script src="app/app.js"></script>
-  <script src="app/routes/main/main.controller.js"></script>
+  <script src="app/routes/data/data.controller.js"></script>
+  <script src="app/routes/data/data.feed.factory.js"></script>
+  <script src="app/routes/data/data.currenttime.directive.js"></script>
+  <script src="app/routes/data/data.facebook.factory.js"></script>
+  <script src="app/routes/data/data.twitter.factory.js"></script>
+  <script src="app/routes/data/data.instagram.factory.js"></script>
+  <script src="app/routes/error/error.controller.js"></script>
+  <script src="app/modules/error.factory.js"></script>
+  <script src="app/modules/error.service.js"></script>
+  <script src="app/routes/facebook/facebook.js"></script>
 
 </html>

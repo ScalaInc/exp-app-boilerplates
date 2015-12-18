@@ -33,128 +33,12 @@
          "required":false,
          "path":"gutterSize"
       },
-
-      {
-         "name":"dateFormat",
-         "type":"select",
-         "label":"Date Format",
-         "required":true,
-         "path":"date_format",
-         "options":[
-            {
-               "label":"EU Date Format",
-               "value":"dd-MM-yyyy HH:mm:ss"
-            },
-            {
-               "label":"US Date Format",
-               "value":"MM-dd-yyyy HH:mm:ss"
-            }
-         ]
-      },
-      {
-         "name":"textSearchId",
-         "type":"text",
-         "label":"Include Item Text Search",
-         "required":false,
-         "path":"include_item_text_search"
-      },
       {
          "name":"refreshRateId",
          "type":"text",
          "label":"Refresh Rate (seconds)",
          "required":true,
          "path":"refresh_rate_seconds"
-      },
-      {
-         "name":"effect",
-         "type":"select",
-         "label":"Tile Animation",
-         "required":false,
-         "path":"effect",
-         "options":[
-            {
-               "label":"Bounce",
-               "value":"bounce"
-            },
-            {
-               "label":"Fade",
-               "value":"fade"
-            },
-            {
-               "label":"Rotate",
-               "value":"rotate"
-            },
-            {
-               "label":"Zoom",
-               "value":"zoom"
-            },
-            {
-               "label":"Flip",
-               "value":"flip"
-            }
-         ]
-      },
-      {
-         "name":"sideBars",
-         "type":"select",
-         "label":"Side Bars",
-         "required":true,
-         "path":"side_bars",
-         "options":[
-            {
-               "label":"Visible",
-               "value":false
-            },
-            {
-               "label":"Hidden",
-               "value":true
-            }
-         ]
-      },
-      {
-         "name":"tileSize",
-         "type":"select",
-         "label":"Tile Size",
-         "required":true,
-         "path":"tile_size",
-         "options":[
-            {
-               "label":"Small",
-               "value":"small"
-            },
-            {
-               "label":"Medium",
-               "value":"normal"
-            },
-            {
-               "label":"Large",
-               "value":"big"
-            }
-         ]
-      },
-      {
-         "name":"imageLandscapeFile",
-         "type":"image",
-         "fileTypes":"image/*",
-         "label":"Cover Image Landscape",
-         "required":false,
-         "path":"cover_image_landscape"
-      },
-      {
-         "name":"imagePortraitFile",
-         "type":"image",
-         "fileTypes":"image/*",
-         "label":"Cover Image Portrait",
-         "required":false,
-         "path":"cover_image_portrait"
-      },
-      {
-         "name":"logoFile",
-         "type":"image",
-         "fileTypes":"image/*",
-         "label":"Page Logo",
-         "required":false,
-         "path":"page_logo"
       }
    ],
    "config":{

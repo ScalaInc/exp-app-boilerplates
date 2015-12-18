@@ -6,14 +6,23 @@ var app = angular.module('socialMediaApp', ['ngRoute', 'ngMaterial', 'ngLodash',
 // define the routes
 app.config(function ($routeProvider) {
   $routeProvider
-    .when('/socialmedia/main',
+    .when('/socialmedia/data',
     {
-      controller: 'mainController',
-      templateUrl: 'app/routes/main/main.html'
+      controller: 'dataController',
+      templateUrl: 'app/routes/data/data.html'
+    })
+    .when('/socialmedia/error',
+    {
+      controller: 'errorController',
+      templateUrl: 'app/routes/error/error.html'
+    })
+    .when('/facebook', {
+      controller: 'facebookController',
+      templateUrl: 'app/routes/facebook/facebook.html'
     })
     .otherwise(
     {
-      redirectTo: '/socialmedia/main'
+      redirectTo: '/socialmedia/data'
     });
 });
 
@@ -25,7 +34,7 @@ app.config(function ($routeProvider) {
       app.value('config', scala.app.config);
       // bootstrapping application
       var elem = document.querySelector('.grid');
-
+      
       angular.bootstrap(document.body, [app.name], {});
     });
   }()

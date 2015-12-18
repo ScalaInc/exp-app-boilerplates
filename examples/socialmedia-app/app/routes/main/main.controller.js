@@ -31,7 +31,7 @@ window.app.controller('mainController', function ($scope, config) {
       data.items.forEach(function (item) {
 
         var text = '';
-        if(config.showText){
+	      if(config.showText === 'true'){
           text = item.text;
           if (text.length > 140) text = text.slice(0, 140) + '...';
           text = moment(item.date).fromNow() + ': ' + text;
@@ -46,13 +46,11 @@ window.app.controller('mainController', function ($scope, config) {
 	  		// check for image or video
 	  		if(item.type === 'video'){
 	  			if(item.hasOwnProperty('videos')){
-	  				console.log('adding video');
 	  				var $video = $('<video>').attr('src', item.videos[0].url).attr('autoplay','true').attr('muted','true').attr('loop','true');
 	  				$video.appendTo($item);
 	  			}
 	  		}else{
 	  			if(item.hasOwnProperty('images')){
-	  				console.log('adding image');
 	  				var $image = $('<img>').attr('src', item.images[0].url);
 	  		        $image.appendTo($item);
 	  			}

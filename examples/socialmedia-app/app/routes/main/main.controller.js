@@ -1,6 +1,6 @@
 'use strict';
 
-window.app.controller('mainController', function ($scope, config) {
+window.app.controller('mainController', function ($scope, $q, config) {
 
   var path = config.feed_configuration.path;
   var uuid = config.feed_configuration.uuid;
@@ -10,10 +10,17 @@ window.app.controller('mainController', function ($scope, config) {
   var width = (1 / rows) * 100;
   var gutter = parseFloat(config.gutterSize) || 4;
   var $facebook = $('#facebook');
-
-  function refresh () {
-    $('#facebook .grid').remove();
-    var $grid = $('<div>').addClass('grid');
+  
+  var removeGrid = function(){
+	// set src to empty using #  
+	$('#facebook video source').attr('src', '');
+	// remove the grid
+	$facebook.children('.grid').remove();		
+  }
+  
+  var refresh = function() {
+	removeGrid();
+	var $grid = $('<div>').addClass('grid');
     var $sizer = $('<div>').addClass('sizer');
     $sizer.css('width', width + '%');
     $sizer.appendTo($grid);
@@ -30,22 +37,19 @@ window.app.controller('mainController', function ($scope, config) {
       $wrapper.appendTo($grid);
       data.items.forEach(function (item) {
 
-        var text = '';
-        //text = item.text;
-        //if (text.length > 140) text = text.slice(0, 140) + '...';
-        //text = moment(item.date).fromNow() + ': ' + text;
         var $wrapper = $('<div>').addClass('wrapper');
         $wrapper.css('width', width + '%');
         var $item = $('<div>').addClass('item');
         $item.css('max-width', '100%');
         $item.css('padding', gutter + 'px');
-        $item.addClass('vignette');
-
+        
 	  		// check for image or video
 	  		if(item.type === 'video'){
 	  			if(item.hasOwnProperty('videos')){
-	  				var $video = $('<video>').attr('src', item.videos[0].url).attr('autoplay','true').attr('muted','true').attr('loop','true');
-	  				$video.appendTo($item);
+	  				var $video = $('<video>').attr('muted','true').attr('loop','true').attr('autoplay','true');
+	  				var $source = $('<source>').attr('src',item.videos[0].url).attr('type','video/mp4');
+					$source.appendTo($video);
+					$video.appendTo($item);
 	  			}
 	  		}else{
 	  			if(item.hasOwnProperty('images')){
@@ -54,28 +58,29 @@ window.app.controller('mainController', function ($scope, config) {
 	  			}
 	  		}
 
-	  		var $text = $('<p>').addClass('text').text(text);
-        $text.css('font-size', font + 'px');
-        $text.appendTo($item);
-        $item.appendTo($wrapper);
+	  	$item.appendTo($wrapper);
         $wrapper.appendTo($grid);
 
 
 	  });
+	  
       $grid.appendTo($facebook);
-
-      $grid.masonry({
+      
+	  $grid.masonry({
         itemSelector: '.wrapper',
         columnWidth: '.sizer'
       });
-      $grid.masonry('reloadItems');
-      $grid.imagesLoaded().progress(function () {
-        $grid.masonry('layout');
-      });
+	  
+	  $grid.masonry('reloadItems');
+	  
+	  $grid.imagesLoaded().progress(function () {
+		  $grid.masonry('layout');
+		  setTimeout(function(){
+			  $grid.masonry('layout');
+		  }, 2000);
+	  });
+	  
     });
-
-
-
 
   }
 

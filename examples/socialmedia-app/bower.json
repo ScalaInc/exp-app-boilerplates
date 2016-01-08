@@ -1,11 +1,12 @@
 {
   "name": "socialmedia-app",
-  "version": "0.0.0",
-  "homepage": "https://github.com/ScalaInc/exp-core",
+  "homepage": "https://github.com/ScalaInc/exp-app-boilerplates",
   "authors": [
     "Remco Schiepers <remco.schiepers@scala.com>"
   ],
-  "description": "displaying social media feeds from EXP",
+  "description": "viewing images and video from social media sources",
+  "main": "",
+  "moduleType": [],
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -15,15 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.4",
-    "angular-loading-bar": "~0.8.0",
-    "angular-material": "~0.10.1",
-    "angular-route": "~1.4.4",
-    "angular-wurfl-image-tailor": "~0.9.4",
-    "ng-lodash": "~0.2.3",
     "masonry": "~3.3.2",
     "jquery": "~2.1.4",
-    "imagesloaded": "~3.2.0",
-    "moment": "~2.10.6"
+    "imagesloaded": "~4.0.0"
   }
 }

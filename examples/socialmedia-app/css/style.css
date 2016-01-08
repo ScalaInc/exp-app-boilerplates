@@ -1,9 +1,9 @@
 @font-face {
     font-family: facebook;
-    src: url(../../../Montserrat-Light.otf);
+    src: url(../Montserrat-Light.otf);
 }
 
-#facebook {
+#socialMedia {
     font-family: facebook;
     background: #000;
     height: 100% !important; /* ug */
@@ -13,21 +13,21 @@
     width: 100%;
 }
 
-#facebook .wrapper {
-    float: left;    
+#socialMedia .wrapper {
+    float: left;
 }
 
-#facebook .item {
+#socialMedia .item {
     max-width: 100%;
     overflow: hidden;
 }
 
-#facebook .item img {
+#socialMedia .item img {
     display: block;
     width: 100%;
     border-radius:2px;
 }
-#facebook .item.vignette:after{
+#socialMedia .item.vignette:after{
     box-shadow: inset 0 -90px 45px -50px #000;
     position: absolute;
     top: 0;
@@ -38,7 +38,7 @@
     content: "";
 }
 
-#facebook .item p {
+#socialMedia .item p {
     position: absolute;
     bottom: 0px;
     max-width: 100%;

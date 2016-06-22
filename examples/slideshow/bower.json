@@ -1,8 +1,0 @@
-{
-  "name": "slideshow",
-  "version": "0.0.0",
-  "dependencies": {
-    "jquery": "~2.1.4",
-    "jquerykeyframes": "~0.0.9"
-  }
-}
